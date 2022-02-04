@@ -1,1 +1,75 @@
-1
+\documentclass[12pt, a4paper]{article}
+\usepackage{caption}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+\usepackage{listings}
+\usepackage{tikz-network}
+\usepackage{amsmath, amsfonts, amssymb, amsthm}
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\title{Algortihms and datastructures}
+\date{2022}
+\author{Kristoffer Klokker}
+\begin{document}
+	\maketitle
+	\clearpage
+	\tableofcontents
+	\clearpage
+		\section{Algorithm analyse}
+			An algorithm must stop for all input and give the correct output.\\
+			An algorithms quality is determined from:
+			\begin{itemize}
+				\item Speed
+				\item Memory used
+				\item Complexity of implmentation
+				\item Other use cases like stability
+			\end{itemize}
+			The measure speed and memory the worst case of the algorithm is always used due to its simplicity in calculations and gurantee. \\
+			The measurement is often used as a function of input size using the big O notation, which says for a given input with $n$ size it will take $n^2$  time to run for example.\\
+			To analyze an algorithm a model is used most often the ram model.
+			\subsection{Ram-model}
+				The ram model is a very simple interpretation of a computer.\\
+				The model consist of a CPU, memory and basic operation (add, sub, mult, shift, move, jump)\\
+				The time of the algorithm is then measured in amount of basic operations done.\\
+				The memory is determined as the amount of memory cell used.
+		\section{Sorting algorithms}
+			Sorting algorithms are used to sort an array of items in an ascending order.\\
+			\subsection{Insertionsort}
+				One of the most simple sorting algorithms.\\
+				Works by going through the list from index 1 and moves moves every entry before the element 1 up until the element is to the right of an element smaller than the element.\\
+				This will therefore have a run time of $O(n^2)$ due to the scenario where the array is in decending order where it will moves $n,n-1,n-2,..,1$ elements which is $\sum\limits_{j=1}^nj=\frac{(n+1)n}{2}\leq\frac{2n^2}{2}=n^2$
+				\begin{algorithmic}[1]
+					\State Insertion-Sort($A,n$)
+					\For{$j=1$}{$n$}
+						\State $key = A[j]$
+						\State $i=j-1$
+						\While {$i\geq0$ and $A[i] > key$}
+							\State $a[i+1]=A[i]$
+							\State $i = i-1$
+						\EndWhile
+						\State $A[i+1]=key$
+					\EndFor
+				\end{algorithmic}
+			\subsection{Selectionsort}
+				Selectionsort is done by taking all elements and then searching for the smallest element and inserting it into the list.\\
+				This will result in the same run time $O(n^2)$ due to the same reasoning as insertionsort.\\
+				\begin{algorithmic}[1]
+					\State Selection-Sort($A,n$)
+					\State Array output $= new Array(n)$
+					\State $i = 0$
+					\While {$i<n$}
+						\State $output[i] = A[i]$
+						\State $A[i].remove()$
+					\EndWhile
+				\end{algorithmic}
+		
+	
+				
+\end{document}
