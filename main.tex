@@ -31,10 +31,27 @@
 				\item Complexity of implmentation
 				\item Other use cases like stability
 			\end{itemize}
-			The measure speed and memory the worst case of the algorithm is always used due to its simplicity in calculations and gurantee. \\
-			The measurement is often used as a function of input size using the big O notation, which says for a given input with $n$ size it will take $n^2$  time to run for example.\\
-			To analyze an algorithm a model is used most often the ram model.
+			\subsection{Algorithm speed}
+				The measure speed and memory the worst case of the algorithm is always used due to its simplicity in calculations and gurantee. \\
+				The measurement is used as a function of input size using the big O notation, which says for a given input with $n$ size it will take $n^2$  time to run for example.\\
+				In reality the speed of an algorithm is not equivalent to the input size due to small constant in every operation but these are so miniscule, they should not be considered. A function may be tuned to have lower constants but this is more a topic for theoretical algorithm optimization.\\
+				When comparing algorithm speed the math relations symbols are replaced as such:
+				\begin{itemize}
+					\item $= -\; \Theta$ Theta
+					\item $\leq -\; O$ O
+					\item $\geq - \;\Omega$ Omega
+					\item $< -\; o$ little o
+					\item $> - \;\omega$ little omega
+				\end{itemize}
+				When comparing the speed of two algorithms the following methods can be used:
+				\begin{align*}
+					\lim\limits_{n\rightarrow \infty}\frac{f(n)}{g(n)}>&0  &&f(n)=\Theta(g(n))\\
+					\lim\limits_{n\rightarrow \infty}\frac{f(n)}{g(n)}=&0  &&f(n)=o(g(n))
+				\end{align*}
+				The generel speeds of alogirthms in order is:
+				$$1,\; \log_2n,\; \sqrt{n},\; n,\; n\log_2n,\; n\sqrt{n},\; n^2,\; n^3,\; n^{10},\; 2^n$$
 			\subsection{Ram-model}
+				To analyze an algorithm a model is used most often the ram model.
 				The ram model is a very simple interpretation of a computer.\\
 				The model consist of a CPU, memory and basic operation (add, sub, mult, shift, move, jump)\\
 				The time of the algorithm is then measured in amount of basic operations done.\\
@@ -69,7 +86,16 @@
 						\State $A[i].remove()$
 					\EndWhile
 				\end{algorithmic}
-		
+			\subsection{Merge sort}
+				Merge sort is an sorting algorithm which is based on the simple merge of two sorted list. Here a new list is created and for every element of the two list, is the lowest value choosen from the first place of the list and putted into the new list. This is is done until both list are empty and when sorting the undefined element is simply equal to infinity when compared.\\[5mm]
+				To make this into an sorting algorithm, every element in an unsorted list is made into to list of length 1. Then merge is performed on the lists in pairs of two, from which new sorted lists emerges. This is done until a single lists is left with all the elements which is now sorted. \\[4mm]
+				 The speed of this sorting algorithm will therefore be $n\lceil\log_2n\rceil$ due to for every level of merge there will be performed $n$ operations. The amount of levels of merges are equal to $\log_2n$ due to first there will be $n$ lists, then $n/2$ lists, and then $n/2^2$. This will continue until $n/2^k=1$ which rearranged to find $k$ will be $log_2n=k$.\\
+				 The ceiling of $\log_2n$ is due to in scenarios where the list length is not a potens of two and a list has no pair in this case it will go on to the next level and thus creating a new level once the list has 1 more item than a potens of two.
+				 \begin{figure}
+				 	\centering
+				 	\includegraphics[width=300px]{assets/mergeSort.png}
+				 	\caption{Merge sort list split up illustration from j2eereference.com}
+				\end{figure}
 	
 				
 \end{document}
