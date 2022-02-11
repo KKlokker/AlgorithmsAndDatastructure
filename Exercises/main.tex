@@ -14,6 +14,8 @@
     urlcolor=black
 }
 \usepackage{amsmath, amsfonts, amssymb, amsthm}
+\usepackage{algpseudocode}
+\usepackage{algorithm}
 \renewcommand{\thesubsubsection}{\thesubsection.\alph{subsubsection}}
 \title{Algorithms and datastructures\\Exercises}
 \date{2022}
@@ -61,6 +63,38 @@
 					\includegraphics[width=\linewidth]{assets/week5Exercise2.png}
 					\caption{Statistic from puzzleSolve/data.csv}
 				\end{figure}
+			\subsection{Write insertion sort pseudo code}
+				\begin{algorithmic}[1]
+					\State Linear search($A,v$)
+					\State $i=0$
+					\While{$i<A.length$ \&\& $A[i]!=v$} 
+						\State $i++$
+					\EndWhile
+					\State return $i$
+				\end{algorithmic}
+			\subsection{What is the average and worst case run time og linear search aglorithm with the element placed randomly}
+				Average: on average the run time will be $n/2$ \\
+				Worst: if the element is at the end of the list it will be $n$
+			\subsection{Let an inversion be that in an array if $i<j$ and $A[i]>A[j]$}
+				\subsubsection{Find inversion pairs in $\{2,3,8,6,1\}$}
+					$(2,1),(3,1),(8,1),(8,6),(6,1)$
+				\subsubsection{For which array will it have the most inverse pairs and how many in an array of length $n$}
+					The backwards sorted array, which will have $\frac{n^2-n}{2}$ pairs.
+				\subsubsection{What is the relation between inversion pairs and insertion sort}
+					The relation is that insertion sort use the same amount of operations in the worst case scenario as inverse pairs.
+			\subsection{Analyse the run time of insertion sort, in best case, worst case and random case}
+				Here 1000 arrays was used from which random length of arrays was used. Here the are the results of the time divided by length average.\\
+				\begin{itemize}
+					\item Best - $4.31\cdot 10^{-6}$
+					\item Worst - $0.016$
+					\item Random - $0.008$
+				\end{itemize}
+				As seen the random is closest to the worst case. 
+			\subsection{Find an algorithm which for a array with integers if there exists a pair which sum is equal to $x$}
+				This is done by using a sort like merge sort which takes $n\codt \log_2n$ then two pointers where one is at the start and one at the end.\\
+				If the two pointers integer sum exceeds $x$ the end moves to the left if less than $x$ the start pointer moves to the right.\\
+				This will take $n$ time and therefore the time will still just be $O(n\cdot \log_2n)$
+				
 \end{document}
 
 
