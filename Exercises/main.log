@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.8) (preloaded format=pdflatex 2021.11.24)  11 FEB 2022 05:27
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.8) (preloaded format=pdflatex 2021.11.24)  13 FEB 2022 06:35
 entering extended mode
 **./main.tex
 (main.tex
@@ -1070,13 +1070,23 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 [1
 
-{C:/Users/Main User/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] (main.toc)
+{C:/Users/Main User/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] (main.toc
+Overfull \hbox (11.21262pt too wide) in paragraph at lines 16--16
+ [][] [][][]\OT1/cmr/m/n/12 Illustrate merge sort us-ing the ar-ray $\OML/cmm/m
+/it/12 A \OT1/cmr/m/n/12 = \OMS/cmsy/m/n/12 f\OT1/cmr/m/n/12 3\OML/cmm/m/it/12 
+; \OT1/cmr/m/n/12 41\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 52\OML/cmm/m/it/12 ; \OT
+1/cmr/m/n/12 26\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 38\OML/cmm/m/it/12 ; \OT1/cmr
+/m/n/12 57\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 9\OML/cmm/m/it/12 ; \OT1/cmr/m/n/1
+2 49\OMS/cmsy/m/n/12 g$[][] [][]  
+ []
+
+)
 \tf@toc=\write6
 \openout6 = `main.toc'.
 
  [2
 
-]
+] [3]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 30.
@@ -1138,7 +1148,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 42.
 
-[3
+[4
 
 ]
 Overfull \hbox (15.71953pt too wide) in paragraph at lines 61--61
@@ -1146,12 +1156,303 @@ Overfull \hbox (15.71953pt too wide) in paragraph at lines 61--61
 is-
  []
 
-<assets/week5Exercise2.png, id=100, 623.32875pt x 313.9228pt>
+<assets/week5Exercise2.png, id=168, 623.32875pt x 313.9228pt>
 File: assets/week5Exercise2.png Graphic file (type png)
 <use assets/week5Exercise2.png>
 Package pdftex.def Info: assets/week5Exercise2.png  used on input line 63.
 (pdftex.def)             Requested size: 390.0pt x 196.41681pt.
-[4 <./assets/week5Exercise2.png>]
+[5 <./assets/week5Exercise2.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `
+(hyperref)                removing `math shift' on input line 79.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 79.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 79.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 79.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 80.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 80.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 82.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 82.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 87--88
+
+ []
+
+[6]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 94.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 94.
+
+
+Overfull \hbox (87.42921pt too wide) in paragraph at lines 98--98
+[]\OT1/cmr/bx/n/14.4 Illustrate merge sort us-ing the ar-ray $\OML/cmm/m/it/14.
+4 A \OT1/cmr/m/n/14.4 = \OMS/cmsy/m/n/14.4 f\OT1/cmr/m/n/14.4 3\OML/cmm/m/it/14
+.4 ; \OT1/cmr/m/n/14.4 41\OML/cmm/m/it/14.4 ; \OT1/cmr/m/n/14.4 52\OML/cmm/m/it
+/14.4 ; \OT1/cmr/m/n/14.4 26\OML/cmm/m/it/14.4 ; \OT1/cmr/m/n/14.4 38\OML/cmm/m
+/it/14.4 ; \OT1/cmr/m/n/14.4 57\OML/cmm/m/it/14.4 ; \OT1/cmr/m/n/14.4 9\OML/cmm
+/m/it/14.4 ; \OT1/cmr/m/n/14.4 49\OMS/cmsy/m/n/14.4 g$ 
+ []
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 98.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 98.
+
+<assets/week6Exercise1.png, id=184, 1003.75pt x 551.05875pt>
+File: assets/week6Exercise1.png Graphic file (type png)
+<use assets/week6Exercise1.png>
+Package pdftex.def Info: assets/week6Exercise1.png  used on input line 100.
+(pdftex.def)             Requested size: 390.0pt x 214.11324pt.
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 103.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `superscript' on input line 103.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 103.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 103.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\Theta' on input line 103.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `superscript' on input line 103.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 103.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 103.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `superscript' on input line 103.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 103.
+
+[7 <./assets/week6Exercise1.png>]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 109.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\Theta' on input line 109.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 109.
+
+<assets/week6Exercise8.png, id=192, 710.655pt x 282.05376pt>
+File: assets/week6Exercise8.png Graphic file (type png)
+<use assets/week6Exercise8.png>
+Package pdftex.def Info: assets/week6Exercise8.png  used on input line 114.
+(pdftex.def)             Requested size: 390.0pt x 154.79004pt.
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 131.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathop' on input line 131.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathgroup' on input line 131.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\symoperators' on input line 131.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 131.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 131.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 131.
+
+[8 <./assets/week6Exercise8.png>]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 134.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `superscript' on input line 134.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `superscript' on input line 134.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 134.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 134.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `superscript' on input line 134.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `superscript' on input line 134.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 134.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 137.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathop' on input line 137.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathgroup' on input line 137.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\symoperators' on input line 137.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 137.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\Theta' on input line 137.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathop' on input line 137.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathgroup' on input line 137.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\symoperators' on input line 137.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 137.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 137.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 139.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\omega' on input line 139.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `superscript' on input line 139.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 139.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 141.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `superscript' on input line 141.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 141.
+
+[9] (main.aux)
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: 6E3B8974B0925FAF73674E399E04E95D;10129.
+ ) 
+Here is how much of TeX's memory you used:
+ 30659 strings out of 478927
+ 603879 string characters out of 2850602
+ 896496 words of memory out of 3000000
+ 47964 multiletter control sequences out of 15000+600000
+ 412530 words of font info for 62 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 106i,13n,108p,1236b,884s stack positions out of 5000i,500n,10000p,200000b,80000s
+ <C:\Users\Main User\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\
+tcrm1200.pk><C:/Users/Main User/AppData/Local/Programs/MiKTeX/fonts/type1/publi
+c/amsfonts/cm/cmbx12.pfb><C:/Users/Main User/AppData/Local/Programs/MiKTeX/font
+s/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Main User/AppData/Local/Program
+s/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/Main User/AppData/
+Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/Main U
+ser/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/
+Users/Main User/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cm
+r10.pfb><C:/Users/Main User/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
+sfonts/cm/cmr12.pfb><C:/Users/Main User/AppData/Local/Programs/MiKTeX/fonts/typ
+e1/public/amsfonts/cm/cmr17.pfb><C:/Users/Main User/AppData/Local/Programs/MiKT
+eX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/Main User/AppData/Local/Pr
+ograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Main User/AppDa
+ta/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Ma
+in User/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+
+Output written on main.pdf (9 pages, 270380 bytes).
+PDF statistics:
+ 271 PDF objects out of 1000 (max. 8388607)
+ 40 named destinations out of 1000 (max. 500000)
+ 220 words of extra memory for PDF output out of 10000 (max. 10000000)
+

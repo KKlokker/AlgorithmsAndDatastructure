@@ -26,7 +26,7 @@
 	\tableofcontents
 	\clearpage
 		\setcounter{section}{4}
-		\section{Uge}
+		\section{Week}
 			\subsection{For each function $f(n)$ and time $t$ in the following table, determine the alrgest size $n$ of a problem that can be solved in time $t$, assuming that the algorithm to solve the problem takes $f(n)$ 1 nanosecond}
 				\begin{table}[h!]
 					\begin{tabular}{|l|l|l|l|l|}
@@ -72,6 +72,7 @@
 					\EndWhile
 					\State return $i$
 				\end{algorithmic}
+		\section{Week}
 			\subsection{What is the average and worst case run time og linear search aglorithm with the element placed randomly}
 				Average: on average the run time will be $n/2$ \\
 				Worst: if the element is at the end of the list it will be $n$
@@ -91,9 +92,56 @@
 				\end{itemize}
 				As seen the random is closest to the worst case. 
 			\subsection{Find an algorithm which for a array with integers if there exists a pair which sum is equal to $x$}
-				This is done by using a sort like merge sort which takes $n\codt \log_2n$ then two pointers where one is at the start and one at the end.\\
+				This is done by using a sort like merge sort which takes $n\cdot \log_2n$ then two pointers where one is at the start and one at the end.\\				
 				If the two pointers integer sum exceeds $x$ the end moves to the left if less than $x$ the start pointer moves to the right.\\
 				This will take $n$ time and therefore the time will still just be $O(n\cdot \log_2n)$
+			\subsection{Illustrate merge sort using the array $A=\{3,41,52,26,38,57,9,49\}$}
+				\begin{figure}[h!]
+					\includegraphics[width=\linewidth]{assets/week6Exercise1.png}
+					\caption{Illustration of merge sort}
+				\end{figure}
+			\subsection{Show that for $f(n)=0.1n^2+5n+25$ that $f(n)=\Theta(n^2)$ and $f(n)=o(n^3)$}
+				\begin{align*}
+					\lim\limits_{n\rightarrow \infty}\frac{0.1n^2+5n+25}{n^2}=0.1\\
+					\lim\limits_{n\rightarrow \infty}\frac{0.1n^2+5n+25}{n^3}=0
+				\end{align*}
+				Due to the first begin bigger than 0 it means that $f(n)=\Theta(n^2)$ and due to the other being zero means that $f(n)=o(n^3)$
+			\subsection{Prove that $max(f(n),g(n))=\Theta(f(n)+g(n))$}
+				Due to the max function the highest resullt $g(n)$ can maximally be equal to $f(n)$.\\
+				Therefore if $f(n)=n^2$ $g(n)$ can maximally be $n^2$ and therefore the addition will result in the same run time.
+			\subsection{Draw binary search, write pseudo code and then code}
+				\begin{figure}[h!]
+					\includegraphics[width=\linewidth]{assets/week6Exercise8.png}
+					\caption{Illustration of binary search}
+				\end{figure}
+				\begin{algorithmic}[1]
+					\State Binary search($A,v$)
+					\State $i=A.length/2$
+					\State $j = A.length/2 + A.length\%2$
+					\While{$iA[i]!= v$ $||$ $j==0$} 
+						\State $j = j/2 + j\%2$
+						\If{$A[i] < v$}
+							\State $i = i + j$
+						\Else
+							\State $i = i - j$
+						\EndIf
+					\EndWhile
+					\State return $i$
+				\end{algorithmic}
+			\subsection{How can binary search be used to optimize linear search to $O(n\log_2n)$?}
+				By instead of linearly going down and finding a number which the current is lower than, a binary search can be done to a number which is lower.\\
+				By this every entry will be performed a binary search upon an such the run time will be $n\log_2n$
+			\subsection{Is $2^{n+1}=O(2^n)$? Is $2^{2n}=O(2^n)$?}
+				$2^{n+1}=2^n\cdot 2^1$ therefore $2^{n+1}=O(2^n)$\\	
+				$\lim\limits_{n\rightarrow \infty}\frac{2^n}{2^{2n}}=0$ therefore $2^n=o(2^{2n})$
+			\subsection{Prove $\log(n!)=\Theta(n\log n)$}
+				$\lim\limits_{n\rightarrow \infty}\frac{\log(n!)}{n\log(n)}=1$ therefore $\log(n!)=\Theta(n\log n)$
+			\subsection{Prove $n!=\omega (2^n)$}
+				$\lim\limits_{n\rightarrow \infty}\frac{2^n}{n!}=0$ therefore $2^n = o(n!) \rightarrow n!=\omega (2^n)$				
+			\subsection{Prove $n!=o(n^n)$}
+				$\lim\limits_{n\rightarrow \infty}\frac{n!}{n^n}=0$ therefore $n! = o(n^n) $	
+				
+					
 				
 \end{document}
 

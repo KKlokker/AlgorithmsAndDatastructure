@@ -2,6 +2,7 @@
     "java.project.sourcePaths": [
         "puzzleSolve",
         "linearSearch",
-        "insertionSort"
+        "insertionSort",
+        "binarySearch"
     ]
 }
