@@ -84,6 +84,7 @@
 					\While {$i<n$}
 						\State $output[i] = A[i]$
 						\State $A[i].remove()$
+						\State $i++$
 					\EndWhile
 				\end{algorithmic}
 			\subsection{Merge sort}
@@ -96,6 +97,27 @@
 				 	\includegraphics[width=300px]{assets/mergeSort.png}
 				 	\caption{Merge sort list split up illustration from j2eereference.com}
 				\end{figure}
+		\section{algorithms}
+			\subsection{Maximum summation of sequential elements in array}
+				The most simple version of this, is two pointers with start of seqence and end, where for each element in the array the start is appointed from which all possible ends if summed and the largest value is taken.\\
+				This means the algorithm will take $O(n^3)$ due to first every element being appointed as start, from which all elements is tested as the end of sequence, from which the summation is done. This will round up to the worst case being $O(n^3)$\\
+				This can be optimized to a run time of $O(n)$, by instead of recalculating everything for every pointer a pointer is started at the start from which an end pointer is also at the start.\\
+				Here the largest summation is found, if it is larger than the best sequence it is assigned. Then the end pointer is moved forward and the new element is summed to the recent best sequence. If the sequence summation is now below zero the start pointer is moved to the end otherwise the end pointer is moved forward.
+				\begin{algorithmic}[1]
+					\State MaxSequence($A$)
+					\State $max = 0$
+					\State $tempMax = 0$
+					\State $i = 0$
+					\While {$i<A.length$}
+						\State $tempMax = max(tempMax + A[i], 0)$
+						\State $max = max(max, tempMax)$
+						\State $i++$
+					\EndWhile
+				\end{algorithmic}
+		\section{Divide-and-Conquer algorithms}
+			The same as recursive algorithms.\\
+			When illustrated a tree is often used to describe the calls and calls backs
+				
 	
 				
 \end{document}
