@@ -140,9 +140,63 @@
 				$\lim\limits_{n\rightarrow \infty}\frac{2^n}{n!}=0$ therefore $2^n = o(n!) \rightarrow n!=\omega (2^n)$				
 			\subsection{Prove $n!=o(n^n)$}
 				$\lim\limits_{n\rightarrow \infty}\frac{n!}{n^n}=0$ therefore $n! = o(n^n) $	
-				
-					
-				
+		\section{Uge}
+			\subsection{Rank the function speed from fastest growing to slowing}
+				$$\sqrt{n},2^n,\log_{10}^2n,\log_2n$$
+				$\lim\limits_{n\rightarrow \infty}\frac{f(x)}{g(x)}$\\
+				\clearpage
+				\begin{table}[h!]
+					\begin{tabular}{|l|l|l|l|l|l|}
+					\hline
+					$g(n)\backslash f(n)$     & $\sqrt{n}$ & $2^n$    & $\log_{10}^2n$ & $n$      & $\log_2n$ \\ \hline
+					$\sqrt{n}$     & 1          & $\infty$ & 0              & $\infty$ & 0         \\ \hline
+					$2^n$          & 0          & 1        & 0              & 0        & 0         \\ \hline
+					$\log_{10}^2n$ & $\infty$   & $\infty$ & 1              & $\infty$ & 0         \\ \hline
+					$n$            & 0          & $\infty$ & 0              & 1        & 0         \\ \hline
+					$\log_2n$      & $\infty$   & $\infty$ & $\infty$       & $\infty$ & 1         \\ \hline
+					\end{tabular}
+				\end{table}
+				This can be rearranged from a clear order is made.\\
+				This is therefore the order of fastest growing to slowest $2^n,n,\sqrt{n},\log_{10}^2n,\log_2n$\\
+				\begin{table}[h!]
+					\begin{tabular}{|l|l|l|l|l|l|}
+					\hline
+					$g(n)\backslash f(n)$     & $2^n$    & $n$      & $\sqrt{n}$ & $\log_{10}^2n$ & $\log_2n$ \\ \hline
+					$2^n$          & 1        & 0        & 0          & 0              & 0         \\ \hline
+					$n$            & $\infty$ & 1        & 0          & 0              & 0         \\ \hline
+					$\sqrt{n}$     & $\infty$ & $\infty$ & 1          & 0              & 0         \\ \hline
+					$\log_{10}^2n$ & $\infty$ & $\infty$ & $\infty$   & 1              & 0         \\ \hline
+					$\log_2n$      & $\infty$ & $\infty$ & $\infty$   & $\infty$       & 1         \\ \hline
+					\end{tabular}
+				\end{table}
+			\subsection{If $f_1(n)\in O(g_1(n))$ and $f_2(n)\in O(g_2(n))$ which statements is true}
+				\begin{enumerate}
+					\item $f_1(n)+f_2(n)\in O(g_1(n)+g_2(n))$
+					\item $g_1(n)+g_2(n)\in \Omega (f_1(n)+f_2(n))$
+					\item $\frac{f_1(n)}{f_2(n)}\in O(\frac{g_1(n)}{g_2(n)})$
+				\end{enumerate}
+				The first statement is true due to if $f_1(n)\Omega f_2(n)$ then $g_2(n)$ will simply be a constant when added to $g_2(n)$, which also account for the other way around.\\
+				The seconds is true due to being the inverse of the first statement.\\
+				The third is not true, in the following assignment $f_1(n)=n^2, f_2(n)=n^2,g_1(n)=n^2,g_2(n)=n^n$ in this scenario the left will go towards 1 and the other will to 0.
+			\subsection{Describe an algorithm which find the number of tuples in an array which has a lower value than another element but higher index in the run time $n\log_2n$}
+				This could be done with merge sort. Here when comparing two elements if an element is choosen from the array which comes first then a tuple exists with every element left in the other array.
+			\subsection{Which of the following statements are true}
+				\begin{enumerate}
+					\item $n^2\in \Omega(n)$
+					\item $n\in \Theta(n^2)$
+					\item $n\log n\in o(n^2)$
+					\item $\log n \in O(\sqrt{n})$
+					\item $n! \in \omega (2^n)$
+				\end{enumerate}
+				\begin{align}
+					\lim\limits_{n\rightarrow \infty}\frac{n^2}{n}=\infty\\
+					\lim\limits_{n\rightarrow \infty}\frac{n^2}{n\log_2n}=\infty\\
+					\lim\limits_{n\rightarrow \infty}\frac{\sqrt{n}}{\log_2n}=\infty\\
+					\lim\limits_{n\rightarrow \infty}\frac{n!}{2^n}=\infty
+				\end{align}
+				The first statement is true according to (1) and the second is false due to (1) not being equal 1.\\
+				The third is true according to (2), likewise the fourth is true according to (3)\\
+				The fifth is also true according to (4).
 \end{document}
 
 

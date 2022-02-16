@@ -3,6 +3,8 @@
         "puzzleSolve",
         "linearSearch",
         "insertionSort",
-        "binarySearch"
+        "binarySearch",
+        "mergeSort",
+        "."
     ]
 }
