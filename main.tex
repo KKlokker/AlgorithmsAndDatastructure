@@ -97,6 +97,32 @@
 				 	\includegraphics[width=300px]{assets/mergeSort.png}
 				 	\caption{Merge sort list split up illustration from j2eereference.com}
 				\end{figure}
+			\subsection{Quick sort}
+				A recursive sorting algorithm which runs mostly at $O(n\log n)$ time but worst case is $O(n^2)$.\\
+				The sorting algorithm is smart due to it not needing subarrays copies and working in the original array.\\
+				The main idea, is choosing an element in the array, then sorting everything in two baskets lower or equal and higher.\\
+				Then the element is placed between the two baskets and quick sort is ran upon the two baskets.
+				\begin{algorithmic}[1]
+					\State Quick-Sort($A,p,r$)
+					\If {$r \leq p$} \State return; \EndIf
+					\State $i = p-1$
+					\For {$j=p$ to $r-1$}
+						\If {$A[j] \leq x$}
+							\State $i=i+1$;
+							\State $temp = A[i]$;
+							\State $A[i] = A[j]$;
+							\State $A[j] = temp$;
+						\EndIf
+					\EndFor
+					\State $temp = A[i+1]$;
+					\State $A[i+1] = A[r]$;
+					\State $A[r] = temp$;
+					\State $Quick-Sort(A,p,i-1)$;
+					\State $Quick-Sort(A,i+1,r)$;
+				\end{algorithmic}
+				The arguments is the array $A$ the start of the sort $p$ and the end $r$.\\
+				Here it is seen that in the for loop if the current element is smaller than the choosen element it is switched with the first element in larger basket such that the smaller basket is in front.\\
+				In case the element is larger nothing is done. Then at the end the choosen element is switched with the first element of the larger bucket.
 		\section{algorithms}
 			\subsection{Maximum summation of sequential elements in array}
 				The most simple version of this, is two pointers with start of seqence and end, where for each element in the array the start is appointed from which all possible ends if summed and the largest value is taken.\\

@@ -30,14 +30,6 @@ public class mergeSort {
     public static <T extends Comparable<T>> void sort(T[] array) {
         if(array.length  == 1)
             return;
-        if(array.length == 2) {
-            T first = array[0];
-            if (array[1].compareTo(first) < 0) { //Swap places if in wrong order 
-                array[0] = array[1];
-                array[1] = first;
-            }
-            return;
-        }
         int length = array.length;
         T[] first = Arrays.copyOfRange(array, 0, length/2);
         T[] second = Arrays.copyOfRange(array,length/2, length); //Round up the second in case of none even array
