@@ -105,17 +105,17 @@
 				\begin{algorithmic}[1]
 					\State Quick-Sort($A,p,r$)
 					\If {$r \leq p$} \State return; \EndIf
-					\State $i = p-1$
-					\For {$j=p$ to $r-1$}
+					\State $i = p$
+					\For {$j=p$ to $r$}
 						\If {$A[j] \leq x$}
-							\State $i=i+1$;
 							\State $temp = A[i]$;
 							\State $A[i] = A[j]$;
 							\State $A[j] = temp$;
+							\State $i=i+1$;
 						\EndIf
 					\EndFor
-					\State $temp = A[i+1]$;
-					\State $A[i+1] = A[r]$;
+					\State $temp = A[i]$;
+					\State $A[i] = A[r]$;
 					\State $A[r] = temp$;
 					\State $Quick-Sort(A,p,i-1)$;
 					\State $Quick-Sort(A,i+1,r)$;
@@ -123,6 +123,53 @@
 				The arguments is the array $A$ the start of the sort $p$ and the end $r$.\\
 				Here it is seen that in the for loop if the current element is smaller than the choosen element it is switched with the first element in larger basket such that the smaller basket is in front.\\
 				In case the element is larger nothing is done. Then at the end the choosen element is switched with the first element of the larger bucket.
+			\subsection{Heap sort}
+				Heap sort is based on the Heap and runs in $O(n\log n)$ and uses no extra space. The heap which is a binary tree which follows heap order. The heap order dictates that a parent should always be greater or equal to its children. \\
+				The tree should also have heap shape, which is all branches should be the saem height with a maximum difference of 1. In case of a larger branch it should be on the left side of the tree.\\
+				This heap can is illustrated as a tree but is actually an array. Here the arrays first entry is the root, the roots children will then be at index 2 times index and 2 times index + 1\\
+				This means the parent is at $\lfloor i/2 \rfloor$ relative to the child.
+				\begin{figure}[h!]
+					\includegraphics[width=300px]{assets/heapAsArray.png}
+					\center
+					\caption{The heap illustration and the heap array}
+				\end{figure}
+				Heap sort then uses the heap array, and when sorting the first entry or the root is switched with the last entry of the heap array.\\
+				By this the size of the heap array shrinks with 1 and the rest of the array is the sorted array.\\
+				When switched the heap is reconstructed.\\
+				The reconstruction process is as follows:
+				\begin{algorithmic}[1]
+					\State Max-Heapify($A,i,n$)
+					\State $l = 2i$;
+					\State $r =2i+1$;
+					\If {$l\leq n$ and $A[l] > A[i]$}
+						\State $largest = l$;
+					\Else
+						\State $largest = i$;
+					\EndIf
+					\If {$r \leq n$ and $A[r] > A[largest]$}
+						\State $largest = r$;
+					\EndIf
+					\If {$largest != i$}
+						\State $temp = A[i]$;
+						\State $A[i] = A[largest]$;
+						\State $A[largest] = temp$;
+						\State $Max-Heapify(A,largest,n)$;
+					\EndIf
+				\end{algorithmic}
+				The $n$ is used as the length of the heap and $i$ is the current node to check.\\
+				The first if check if the left child is larger, the second checks if the right child is larger, and the third check if something should be changed and if then call itself upon the newly changed child.\\
+				With this function in mind heap sort becomes: 
+				\begin{algorithmic}[1]
+					\State HeapSort($A,n$)
+						\State Max-Heapify(A,n);
+						\For {$i=n$; $2 < i$; $i--$;}
+							\State $temp = A[i]$;
+							\State $A[i] = A[0]$;
+							\State $A[0] = temp$;
+							\State Max-Heapify($A,1,i-1$);
+						\EndFor
+				\end{algorithmic}
+				The run time of this is $O(n\log n)$ dut to the trees height will maximally be $\log n$ which will be the number of exhanges $n$ times.
 		\section{algorithms}
 			\subsection{Maximum summation of sequential elements in array}
 				The most simple version of this, is two pointers with start of seqence and end, where for each element in the array the start is appointed from which all possible ends if summed and the largest value is taken.\\

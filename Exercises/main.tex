@@ -140,7 +140,7 @@
 				$\lim\limits_{n\rightarrow \infty}\frac{2^n}{n!}=0$ therefore $2^n = o(n!) \rightarrow n!=\omega (2^n)$				
 			\subsection{Prove $n!=o(n^n)$}
 				$\lim\limits_{n\rightarrow \infty}\frac{n!}{n^n}=0$ therefore $n! = o(n^n) $	
-		\section{Uge}
+		\section{Week}
 			\subsection{Rank the function speed from fastest growing to slowing}
 				$$\sqrt{n},2^n,\log_{10}^2n,\log_2n$$
 				$\lim\limits_{n\rightarrow \infty}\frac{f(x)}{g(x)}$\\
@@ -197,6 +197,98 @@
 				The first statement is true according to (1) and the second is false due to (1) not being equal 1.\\
 				The third is true according to (2), likewise the fourth is true according to (3)\\
 				The fifth is also true according to (4).
+		\section{Week}
+			\subsection{Illustrate the partitioning in quick sort on the following array}
+				$$A=\{13,19,9,5,12,8,7,4,21,2,6,11\}$$
+				\begin{figure}[h!]
+					\center
+					\includegraphics[width=300px]{assets/week8Exercise1.png}
+					\caption{Quick sort partioning on an array}
+				\end{figure}
+			\subsection{In an array with only the same value, where will quick sort return the middle value}
+				The returned placement will then be the length of the array -1 / the last element in the array.\\
+			\subsection{What is the run time of quick sort on the  array of the same value}
+				This will either be the best case or worst case for the algorithm.\\
+				This is due to if left partition is $\leq$ nothing is moved. Whereas if the right partition is $\geq$ it will have to move every element.
+			\subsection{Is an sorted array a min-heap}
+				Yes due to in a sorted array $2i$ and $2i+1$ will always be lower or equal
+			\subsection{Is the following array a max-heap?}
+				$$<23,17,14,6,13,10,1,5,7,12>$$
+				It is not a valid max-heap due to 6's children is 5 and 7 which is not smaller.
+			\subsection{Insert 9 into the following max-heap tree}
+				$$<10,8,6,3,7,4,5,1,2>$$
+				by inserting it on index 3 the following tree is made\\
+				$<10,8,9,3,7,4,5,1,2>$\\
+				This can then be checked\\
+				$10 > 8,9$\\
+				$8 > 3,7$\\
+				$9 > 4,5$\\
+				$3 > 1,2$\\
+				It is therfore a valid max-heap
+			\subsection{Insert 2 into the following min-heap}
+				$$<1,3,5,4,10,13,7,6,17>$$
+				$<1,2,3,5,4,10,13,7,6,17>$\\
+				$1 < 2,3$\\
+				$2 < 5,4$\\
+				$3 < 10,13$\\
+				$5 < 7,6$\\
+				$10 < 17$
+			\subsection{Illustrate Max-Heapify($A$,2) on the following array}
+				$$<27,17,3,16,13,10,1,5,7,12,4,8,9,0>$$
+				$<27,17,\color{red}2\color{black},3,16,13,10,1,5,7,12,4,8,9,0>$\\
+				$2 > 13, 10$\\
+				$<27,17,13,16,13,\color{red}2\color{black},10,1,5,7,12,4,8,9,0>$\\
+				$2 > 4, 8$\\
+				$<27,17,3,16,13,8,10,1,5,7,12,4,\color{red}2\color{black},9,0>$\\
+			\subsection{Use Heap-Extract-Max(A) on the following array}
+				$$<21,18,10,12,8,9,4,7,5,2>$$
+				$<\color{red}2\color{black},18,10,12,8,9,4,7,5,\color{blue}21\color{black}>$\\
+				$<18,\color{red}2\color{black},10,12,8,9,4,7,5,\color{blue}21\color{black}>$\\
+				$<18,12,10,\color{red}2\color{black},8,9,4,7,5,\color{blue}21\color{black}>$\\
+				$<18,12,10,7,8,9,4,\color{red}2\color{black},5,\color{blue}21\color{black}>$\\
+				$<\color{red}5\color{black},12,10,7,8,9,4,2,\color{blue}18,21\color{black}>$\\
+				$<12,\color{red}5\color{black},10,7,8,9,4,2,\color{blue}18,21\color{black}>$\\
+				$<12,8,10,7,\color{red}5\color{black},9,4,2,\color{blue}18,21\color{black}>$\\
+				$<\color{red}2\color{black},8,10,7,5,9,4,\color{blue}12,18,21\color{black}>$\\
+				$<10,8,\color{red}2\color{black},7,5,9,4,\color{blue}12,18,21\color{black}>$\\
+				$<10,8,9,7,5,\color{red}2\color{black},4,\color{blue}12,18,21\color{black}>$\\
+				$<\color{red}4\color{black},8,9,7,5,2,\color{blue}10,12,18,21\color{black}>$\\
+				$<9,8,\color{red}4\color{black},7,5,2,\color{blue}10,12,18,21\color{black}>$\\
+				$<\color{red}2\color{black},8,4,7,5,\color{blue}9,10,12,18,21\color{black}>$\\
+				$<8,\color{red}2\color{black},4,7,5,\color{blue}9,10,12,18,21\color{black}>$\\
+				$<8,7,4,\color{red}2\color{black},5,\color{blue}9,10,12,18,21\color{black}>$\\
+				$<\color{red}5\color{black},7,4,2\color{blue}8,9,10,12,18,21\color{black}>$\\
+				$<7,\color{red}5\color{black},4,2\color{blue}8,9,10,12,18,21\color{black}>$\\
+				$<\color{red}2\color{black},5,4\color{blue}7,8,9,10,12,18,21\color{black}>$\\
+				$<5,\color{red}2\color{black},4\color{blue}7,8,9,10,12,18,21\color{black}>$\\
+				$<\color{red}4\color{black},2\color{blue}5,7,8,9,10,12,18,21\color{black}>$\\
+				$<\color{red}2\color{black}\color{blue}4,5,7,8,9,10,12,18,21\color{black}>$\\
+				$<\color{blue}2,4,5,7,8,9,10,12,18,21\color{black}>$\\
+			\subsection{Where in a max heap will the smallest element reside}
+				Due to the trees nature, a specific index is not known rather just it is at a leaf in the tree
+			\subsection{Find all mini-heaps with the elements 1,2,3,4}
+				$<4,3,2,1>$\\
+				$<4,2,3,1>$\\
+				$<4,3,1,2>$\\
+			\subsection{Prove that the childrens index relative to the parent is index times two and index times two plus 1}
+				For a parent the position can be divided to the sum of the current height and the index of the level.\\
+				Ex the parent 13 can be written as (8+5) where 8 is the height index and 5 is the offset.\\
+				The child index will then be on the next height therefore the double height index, and the offset will then be the double due to every sibling to the parent having 2 children.\\
+				Therefore in the example the parents child will be 2(8+5) therefore two times index, and the other child will have the offset of plus 1.
+			\subsection{Analysis if d-ary heap}
+				d-ary heaps have d children instead of two
+				\subsubsection{What would be the array representation}
+					This would be the same but instead of children being at 2i and 2i+1 it would be 3i and 3i+1\\
+				\subsubsection{What is the height of a tree with n elements with d children}
+					A level consist of $3^n$ where $n$ is the height.\\
+					Therefore for a level it will be the sum of all previus level.\\
+					That sereis can be condensed to $\frac{3^n-1}{2}$
+				\subsubsection{Rewrite heap sort such it works with d-ary heaps}
+					First of when referencing the children it will be $di$ and $di+1$\\
+					When moving keys around there will then be $d$ checks for the largest value.\\
+					It can here be noted that hte height of the tree was $\frac{3^n-1}{2}$ therefore making the run time $O(3^n\cdot n)$ due $n$ exhanges being done at each level.
+				
+				
 \end{document}
 
 

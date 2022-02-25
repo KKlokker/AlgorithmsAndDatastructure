@@ -5,6 +5,7 @@ public class BinarySearch {
             if(test[binarySearch(test, i)] != i)
                 System.out.println("Error: " + i);
         }
+        
     }
 
     public static <T extends Comparable<T>> int binarySearch(T[] list, T value) {
