@@ -6,7 +6,7 @@
     colorlinks,
     citecolor=black,
     filecolor=black,
-    linkcolor=black,
+    linkcolor=blue,
     urlcolor=black
 }
 \usepackage{listings}
@@ -124,6 +124,7 @@
 				Here it is seen that in the for loop if the current element is smaller than the choosen element it is switched with the first element in larger basket such that the smaller basket is in front.\\
 				In case the element is larger nothing is done. Then at the end the choosen element is switched with the first element of the larger bucket.
 			\subsection{Heap sort}
+			\label{sec:HeapSort}
 				Heap sort is based on the Heap and runs in $O(n\log n)$ and uses no extra space. The heap which is a binary tree which follows heap order. The heap order dictates that a parent should always be greater or equal to its children. \\
 				The tree should also have heap shape, which is all branches should be the saem height with a maximum difference of 1. In case of a larger branch it should be on the left side of the tree.\\
 				This heap can is illustrated as a tree but is actually an array. Here the arrays first entry is the root, the roots children will then be at index 2 times index and 2 times index + 1\\
@@ -137,6 +138,7 @@
 				By this the size of the heap array shrinks with 1 and the rest of the array is the sorted array.\\
 				When switched the heap is reconstructed.\\
 				The reconstruction process is as follows:
+				\label{code:MaxHeapify}
 				\begin{algorithmic}[1]
 					\State Max-Heapify($A,i,n$)
 					\State $l = 2i$;
@@ -170,7 +172,34 @@
 						\EndFor
 				\end{algorithmic}
 				The run time of this is $O(n\log n)$ dut to the trees height will maximally be $\log n$ which will be the number of exhanges $n$ times.
+			\subsection{Counter sort}
+				Counter sort works in $O(n+k)$ time on arrays of objects represented by integers by having an array with $k$ length. Where $k$ is the highest integer.\\
+				It then goes through the orginal array and takes every elements value and uses it as index for the $k$ array and itterate by 1.\\
+				Then a new array with length $n$ is made and every element in the $k$ array is added to the new array with the value of elements index as many times as the value of element.
+			\subsection{Radix sort}
+				Radis sort runs in $O(d(n+k))$ time, where $d$ is amount of digits in largest number and $k$ is the max value of the base of the number system. First Counter sort is done upon every elements lasts digit. Then from the new array counter sort is done again on the second lasts digit. This is repeated as many times as the most digits in the largest number.\\
+				This therefore means in the counter sort, the $k$ array only has the length the max value of the number system and instead of itterate it is now a list with references.\\
+				This therefore solves the issue of now knowing the largest digit, and the temperary array is a lot shorter.
 		\section{algorithms}
+			\subsection{Divide-and-Conquer algorithms}
+				The same as recursive algorithms.\\
+				When illustrated a tree is often used to describe the calls and calls backs
+			\subsection{Lower bound of comparison sorting algorithms}
+				To find the lower bound of comparison sorting algorithms, the comparison model can be used.\\
+				The model consist of a binary tree where every branch is a comparison, and the leafs are possible answers.\\
+				The run time here is the comparisons, therefore the run time to a leaf is the length of the path. Therefore making worst case height of tree.\\
+				It can therefore be seen when sorting an array of $n$ elements there are $n!$  different rearrangement.\\
+				Each rearrangement needs a leaf therefore the tree has to have $n!$ leafs.\\
+				The maximum amount of leafs in a tree is $2^h$ where $h$ is the height.\\
+				Therefore the minimum amount of height will be $2^h\geq n! \rightarrow h\geq \log n!$\\
+				\begin{align*}
+					h&\geq \log n!\\
+					&=\log (n\cdot (n-1)\cdot (n-2)\cdot ...)\\
+					&=\log n + \log(n-1) + ...\\
+					&\geq \frac{n}{2}\cdot \log(\frac{n}{2})\\
+					&=\frac{n}{2}(\log(n)-1)
+				\end{align*}		
+				It can here be derived via the summation, that $h=\Omega(n\log n)$
 			\subsection{Maximum summation of sequential elements in array}
 				The most simple version of this, is two pointers with start of seqence and end, where for each element in the array the start is appointed from which all possible ends if summed and the largest value is taken.\\
 				This means the algorithm will take $O(n^3)$ due to first every element being appointed as start, from which all elements is tested as the end of sequence, from which the summation is done. This will round up to the worst case being $O(n^3)$\\
@@ -187,9 +216,51 @@
 						\State $i++$
 					\EndWhile
 				\end{algorithmic}
-		\section{Divide-and-Conquer algorithms}
-			The same as recursive algorithms.\\
-			When illustrated a tree is often used to describe the calls and calls backs
+		\section{Datastructures}
+			\subsection{Priority queues}
+				Priority queues are based on the heap structure, which is described in \hyperref[sec:HeapSort]{Heap sort}.\\
+				Here the queue objects are given a key from which the value iindicates the priority of the object.\\
+				It can here selected if the wanted heap is a max heap or min heap, but most often a max heap.\\
+				For the queue to work it uses the following functions:
+				\begin{itemize}
+					\item Max-Heapify(A,i,n) - makes the array in max heap order with the length $n$ and looks at node $i$
+					\item Heap-Extract-Max(A,n) - returns the highest priority object and remove from heap
+					\item Heap-Increase-Key(A,i,key) - modifies the key $i$ to a higher value $key$ and place it correctly in heap
+					\item Max-Heap-Insert(A,key) - Inserts $key$ into the heap
+				\end{itemize}
+				\subsubsection{Pseudo code}
+					\hyperref[code:MaxHeapify]{Max-Heapify code}
+				\begin{algorithmic}[1]
+					\State Heap-Extract-Max($A,n$)
+					\If {$n < 1$}
+						\State error 'Heap underflow'
+					\EndIf
+					\State $max = A[0]$
+					\State $A[0] = A[n-1]$
+					\State $Max-Heapify(A,1,n-1)$
+					\State return $max$
+				\end{algorithmic}
+				.\\[3mm]
+				\begin{algorithmic}[1]
+					\State Heap-Increase-Key($A,i,key$)
+					\If {$key < key[i]$}
+						\State error 'new key is smaller than current'
+					\EndIf
+					\While {$i > 0$ AND $A[Parent(i)] < A[i]$}
+							\State $temp = A[i]$;
+							\State $A[i] = A[i/2]]$;
+							\State $A[i/2] = temp$;
+							\State $i=i/2$
+					\EndWhile
+					\end{algorithmic}
+				.\\[3mm]
+					\begin{algorithmic}[1]
+						\State Max-Heap-Insert(A,key,n)
+						\State $A.insert(n,-\infty)$
+						\State $Heap-Increase-Key(A,n,key)$
+					\end{algorithmic}
+
+			
 				
 	
 				
