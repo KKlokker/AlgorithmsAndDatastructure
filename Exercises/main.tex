@@ -287,7 +287,110 @@
 					First of when referencing the children it will be $di$ and $di+1$\\
 					When moving keys around there will then be $d$ checks for the largest value.\\
 					It can here be noted that hte height of the tree was $\frac{3^n-1}{2}$ therefore making the run time $O(3^n\cdot n)$ due $n$ exhanges being done at each level.
-				
+		\section{Week}
+			\subsection{Show that the worst-case running time of Heapsort is $\Omega(n\log n)$}
+				Heap sort is based upon the a binary tree which height with $n$ nodes will be $\log n$. Therefore in the worst case the element os moved through out the whole tree height $n$ times. Therefore making the run time $n \log n$. 
+			\subsection{Illustrate counting sort}
+				\begin{figure}
+					\center
+					\includegraphics[width=300px]{assets/Week9Exercise2.png}
+					\caption{Counnting sort illustration}
+				\end{figure}
+			\subsection{In the following code for counting sort, will it still work if line 9 got switched such it went from 1 to $A.length$}
+				\begin{algorithmic}[1]
+					\State Count search($A,B,k$)
+					\State C = new Array()\{0,0,0,... k times\};
+					\For {$j=1$ to $A.length$}
+						\State $C[A[j]]++$ 
+					\EndFor
+					\For {$i=1$ to $k$}
+						\State $C[i] = C[i] + C[i+1]$
+					\EndFor
+					\For {$j= A.length$ to $1$}
+						\State $B[C[A[j]]] = A[j]$
+						\State $C[A[j]] = C[A[j]] -1$
+					\EndFor
+				\end{algorithmic}
+				For it to work the element is simply out in at index $j$ the amount of times of the value of $A[j]$. This also eleminates the before hand for loop on line 6.
+			\subsection{Make an algorithm which in constant time can answer amount of elements in a range, with a preprocess time of $\Theta(n+k)$}
+				\begin{algorithmic}[1]
+					\State CountElementsBefore($A,k$)
+					\State C = new Array()\{0,0,0,... k times\};
+					\For {$j=1$ to $A.length$}
+						\State $C[A[j]]++$ 
+					\EndFor
+					\For {$i=1$ to $k$}
+						\State $C[i] = C[i] + C[i+1]$
+					\EndFor
+					\State $ElementsInRange(A,k,s,e)$
+					\State $B = CountElementsBefore(A,k)$
+					\State return $B[e]-B[s]$
+				\end{algorithmic}
+				Here the range must be between 0 and $k$
+			\subsection{Which of the following sorting algorithms are stable and unstable, and how could they be stable}
+				\subsubsection{Insertion sort}
+					Insertion sorts will be stable, due to the sorting starting from 0 and when moving it will move as long it is smaller but not equal.
+				\subsubsection{Merge sort}
+					Insertion sort will be stable, due to if elements are equal it should take form the same array and otherwise pairs will have same order.
+				\subsubsection{Heapsort}
+					Heap sort is not stable. A clear example is $3(a),3(b),2,1$ first $3(a)$ is choosen $3(b),2,1,3(a)$, then $3(b)$ is choosen $2,1,3(b),3(a)$.\\
+					To make it stable a MIN heap sort could be used. It would get so complication in the array range, so a list would be needed or move every element.
+				\subsubsection{Quicksort}
+					The quick sort will be unstable due to in the case of $1,3,4,8(a),8(b),5,\color{red}7\color{black}$, when at the 5 it would be switched with $8(a)$ and therfore change the order.\\
+					To make it stable to array list could be created and elements could be moved to each such that no switching in between is needed.
+			\subsection{Perform radis sort on the following inputs}
+				$$747,765,544,754,431,231,222$$
+				\begin{center}
+					COW,DOG,SEA,RUG,ROW,MOB,BOX,TAB
+				\end{center}
+				\subsubsection{Numbers} 
+					\begin{table}[h!]
+					\begin{tabular}{llllllllll}
+					\cline{1-8}
+					\multicolumn{1}{|l|}{747} & \multicolumn{1}{l|}{765}                          & \multicolumn{1}{l|}{754}                          & \multicolumn{1}{l|}{431}                          & \multicolumn{1}{l|}{231}                          & \multicolumn{1}{l|}{222} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{}                                   &                       &                       \\ \cline{1-8}
+					0                         & 1                                                 & 2                                                 & 3                                                 & 4                                                 & 5                        & 6                     & 7                                                       & 8                     & 9                     \\
+					                          & \begin{tabular}[c]{@{}l@{}}431\\ 231\end{tabular} & 222                                               &                                                   & 754                                               & 765                      &                       & 747                                                     &                       &                       \\ \hline
+					\multicolumn{1}{|l|}{431} & \multicolumn{1}{l|}{231}                          & \multicolumn{1}{l|}{222}                          & \multicolumn{1}{l|}{754}                          & \multicolumn{1}{l|}{765}                          & \multicolumn{1}{l|}{747} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{}                                   & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \hline
+					0                         & 1                                                 & 2                                                 & 3                                                 & 4                                                 & 5                        & 6                     & 7                                                       & 8                     & 9                     \\
+					                          &                                                   & 222                                               & \begin{tabular}[c]{@{}l@{}}431\\ 231\end{tabular} & \begin{tabular}[c]{@{}l@{}}754\\ 747\end{tabular} &                          & 765                   &                                                         &                       &                       \\ \hline
+					\multicolumn{1}{|l|}{222} & \multicolumn{1}{l|}{431}                          & \multicolumn{1}{l|}{231}                          & \multicolumn{1}{l|}{754}                          & \multicolumn{1}{l|}{747}                          & \multicolumn{1}{l|}{765} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{}                                   & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \hline
+					0                         & 1                                                 & 2                                                 & 3                                                 & 4                                                 & 5                        & 6                     & 7                                                       & 8                     & 9                     \\
+					                          &                                                   & \begin{tabular}[c]{@{}l@{}}222\\ 231\end{tabular} &                                                   & 431                                               &                          &                       & \begin{tabular}[c]{@{}l@{}}754\\ 747\\ 765\end{tabular} &                       &                       \\ \hline
+					\multicolumn{1}{|l|}{222} & \multicolumn{1}{l|}{231}                          & \multicolumn{1}{l|}{431}                          & \multicolumn{1}{l|}{754}                          & \multicolumn{1}{l|}{747}                          & \multicolumn{1}{l|}{765} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{}                                   & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \hline
+					\end{tabular}
+					\end{table}
+				\subsubsection{Letters}
+					\begin{table}[h!]
+					\tiny
+					\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|}
+					\hline
+					COW & DOG                                               & SEA & ROW & MOB & BOX & TAB &                                                                     &     &     &     &                                                   &     \\ \hline
+					A   & B                                                 & C   & D   & E   & G   & M   & O                                                                   & R   & S   & T   & W                                                 & X   \\
+					SEA & \begin{tabular}[c]{@{}l@{}}MOB\\ TAB\end{tabular} &     &     &     & DOG &     &                                                                     &     &     &     & \begin{tabular}[c]{@{}l@{}}COW\\ ROW\end{tabular} & BOX \\ \hline
+					SEA & MOB                                               & TAB & DOG & COW & ROW & BOX &                                                                     &     &     &     &                                                   &     \\ \hline
+					A   & B                                                 & C   & D   & E   & G   & M   & O                                                                   & R   & S   & T   & W                                                 & X   \\
+					TAB &                                                   &     &     & SEA &     &     & \begin{tabular}[c]{@{}l@{}}MOB\\ DOG\\ COW\\ ROW\\ BOX\end{tabular} &     &     &     &                                                   &     \\ \hline
+					TAB & SEA                                               & MOB & DOG & COW & ROW & BOX &                                                                     &     &     &     &                                                   &     \\ \hline
+					A   & B                                                 & C   & D   & E   & G   & M   & O                                                                   & R   & S   & T   & W                                                 & X   \\
+					    & BOX                                               & COW & DOG &     &     & MOB &                                                                     & ROW & SEA & TAB &                                                   &     \\ \hline
+					BOX & COW                                               & DOG & MOB & ROW & SEA & TAB &                                                                     &     &     &     &                                                   &     \\ \hline
+					\end{tabular}
+					\end{table}	
+			\subsection{Tail recursive quicsort}
+				The following exercises is about the following pseudo version of quicksort, which uses tail recursion.\\
+				\begin{algorithmic}[1]
+					\While {$p < r$}
+						\State $q$ = Partition($A,p,r$)
+						\State Tail-Recursive-QuickSort(A,p,q-1)
+						\State p = q+1
+					\EndWhile
+				\end{algorithmic}
+				\subsubsection{Argue that the given version works}
+					This will work due to the while loop. This will work due to the while loop going to the right and the recursive call going to the left.
+				\subsubsection{Describe how the stack amount could be $n$}
+					This will happend just like the worst case of quick sort where the largest element is always found as the largest element.
+				\subsubsection{How could the stack call be less}
+					This could be done by like other quick sort optimizations where instead of going with the left most in partitioning it should take some and find the middle and use or just a random element.
 				
 \end{document}
 

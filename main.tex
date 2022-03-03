@@ -58,13 +58,13 @@
 				The memory is determined as the amount of memory cell used.
 		\section{Sorting algorithms}
 			Sorting algorithms are used to sort an array of items in an ascending order.\\
-			\subsection{Insertionsort}
+			\subsection{Insertion sort}
 				One of the most simple sorting algorithms.\\
 				Works by going through the list from index 1 and moves moves every entry before the element 1 up until the element is to the right of an element smaller than the element.\\
 				This will therefore have a run time of $O(n^2)$ due to the scenario where the array is in decending order where it will moves $n-1,n-2,..,1$ elements which is $\sum\limits_{j=1}^nj=\frac{(n-1)n}{2}\leq\frac{n^2-n}{2}=n^2$
 				\begin{algorithmic}[1]
 					\State Insertion-Sort($A,n$)
-					\For{$j=1$}{$n$}
+					\For{$j=1$ to $n$}
 						\State $key = A[j]$
 						\State $i=j-1$
 						\While {$i\geq0$ and $A[i] > key$}
