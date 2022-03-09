@@ -2,13 +2,13 @@
 \usepackage{caption}
 \usepackage{graphicx}
 \usepackage{hyperref}
+\usepackage{xcolor}
 \hypersetup{
-    colorlinks,
-    citecolor=black,
-    filecolor=black,
-    linkcolor=blue,
-    urlcolor=black
+colorlinks=false,% hyperlinks will be black
+  linkbordercolor=blue,% hyperlink borders will be red
+  pdfborderstyle={/S/U/W 1}% border style will be underline of width 1pt
 }
+
 \usepackage{listings}
 \usepackage{tikz-network}
 \usepackage{amsmath, amsfonts, amssymb, amsthm}
@@ -216,6 +216,19 @@
 						\State $i++$
 					\EndWhile
 				\end{algorithmic}
+			\subsection{Hashing}
+				Hashing is method of getting a idenfiable key to some data.\\
+				While the data may have range of indexible data, the hash function is a way to get a smaller index.\\
+				The motivation is seen in the following example.\\
+				Storing 5 credit card numbers in an array with size of every possible creditcard number would not be optimal.\\
+				A simple solution is taking the integer value of the object an using modulo on the desired size of the array.\\
+				This will create problems due to some object will collide, as a resolution a list can be created at every index which then can be added.\\
+				This will result in slower run time worst case being $O(1)$ for the index and $O(n)$ for finding it in the list.\\
+				An alternative is a binary search tree to optimize it to $O(\log n)$.\\
+				The ideal hash function will spread out objects as much as possible and a simple an reliable function being
+				$$h(k)=((a\cdot k+b) \;mod\; p)\; mod\; m$$
+				Where p is a prime larger than the size of the array and a and b are random constant integers $1\leq a \leq p-1$ and $0\leq b \leq p-1$
+				
 		\section{Datastructures}
 			\subsection{Priority queues}
 				Priority queues are based on the heap structure, which is described in \hyperref[sec:HeapSort]{Heap sort}.\\
@@ -259,7 +272,289 @@
 						\State $A.insert(n,-\infty)$
 						\State $Heap-Increase-Key(A,n,key)$
 					\end{algorithmic}
-
+			\subsection{Binary search tree}
+				A binary search tree is a tree which follows inorder.\\
+				Inorder states that for a node the left child is smaller and the right child is larger.\\
+				By this to get the ordered list a recursive call can be:
+				\begin{algorithmic}[1]
+					\State list-tree(x)
+					\State list-tree(x.left)
+					\State print(x)
+					\State list-tree(x.right)
+				\end{algorithmic}
+				This will go through the tree in order, this pseudo code will here print every key, and it should be noded the code does not handle NIL objects.\\
+				This operation takes $O(n)$ run time and all other oeparations as mention below will run in $O(height)$. The balanced binary tree will therefore have a height of $\log_2 (n+1) \leq $ height and making the run time $O(\log n)$.
+				\subsubsection{Searching a binary tree}
+					To search the tree, a comparison is done at each node from which the right child is choosen:
+					\begin{algorithmic}[1]
+						\State Tree-Search(x,k)
+						\If {$x == NIL$ OR $k==key[x]$}
+							\State return $x$
+						\EndIf
+						\If {$k < x.key$}
+							\State return $Tree-Search(x.left,k)$
+						\Else
+							\State return $Tree.search(x.right,k)$
+						\EndIf
+					\end{algorithmic}
+					Find the lowest key, .					
+					\begin{algorithmic}[1]
+						\State Tree-Minimum(x)
+						\While{$x.left != NIL$}
+							\State $x = x.left$
+						\EndWhile
+						\State return $x$
+					\end{algorithmic}
+					To find the smallest key bigger than key $x$. Works by if right side is not NIL it will be the minumum on the right side otherwise it moves up to the parent until the given node is the left child to the parent.
+					\begin{algorithmic}[1]
+						\State Tree-Successor($x$)
+						\If {$x.right != NIL$}
+							\State return Tree-Minimum($x.right$)
+						\EndIf
+						\State $y=x.parent$
+						\While{$y!=NIL$ and $x==y.right$}
+							\State x= y
+							\State y = y.parent
+						\EndWhile
+						\State return $y$
+					\end{algorithmic}
+				\subsubsection{Inserting in the tree}
+				\label{sec:BSTInsert}
+					\begin{minipage}{0.49\textwidth}
+						Tree-Insert(T,z)
+						\begin{algorithmic}[1]
+							\State $y = NIL$
+							\State $x = T.root$
+							\While {$x $!=$ NIL$}
+								\State $y = x$
+								\If {$z.key < x.key$}
+									\State $x = x.left$
+								\Else
+									\State $x = x.right$
+								\EndIf
+							\EndWhile
+							\State $z.p = y$
+							\If {$y == NIL$}
+								\State $T.root = z$
+							\ElsIf {$z.key < y.key$}
+								\State $y.left = z$
+							\Else
+								\State $y.right = z$
+							\EndIf								
+						\end{algorithmic}
+					\end{minipage}
+					\begin{minipage}{0.49\textwidth}
+						$y$ is the current nodes parent and $x$ is the current node.\\
+						Then in the while loop the node is moved down in the correct direction, until it hits NILL.\\
+						Then a check is done, if $y$ is NILL the tree is empty and we are at root.\\
+						Otherwise the node is placed according to the correct direction to parent.
+					\end{minipage}
+				\clearpage
+				\subsubsection{Deleting a node in the tree}
+				When removing an element there is three case according to the number of children equal to NIL:
+						\begin{itemize}
+							\item 2 - The element is replaced by NIL
+							\item 1 - The parent reference is changed to the child
+							\item 0 - The succesor to the remove node is inserted instead.
+						\end{itemize}
+					\begin{minipage}{0.49\textwidth}
+						Tree-Delete(T,z)
+						\begin{algorithmic}[1]
+							\If {$z.left == NIL$}
+								\State $Transplant(T,z,z.right)$
+							\ElsIf {$z.right == NIL$}
+								\State $Transplant(T,z,z.left)$
+							\Else
+								\State $y=Tree-Min(z.right)$
+								\If {$y.p != z$}
+									\State $Transplant(T,y,y.right)$
+									\State $y.right = z.right$
+									\State $y.right.p = y$
+								\EndIf
+								\State $Transplant(T,z,y)$
+								\State $y.left = z.left$
+								\State $y.left.p = y$
+							\EndIf
+						\end{algorithmic}
+					\end{minipage}
+					\begin{minipage}{0.49\textwidth}
+						The delete method uses a $Transplant$ function which arguments are:\\
+						 Tree, node1, node2. \\
+						Which then switches node1 and node2.\\
+						The first if and else if covers the first case and second case with 2 or 1 child equal to NILL\\
+						In this case the other child is swapped with the node.\\[4mm]
+						The else covers the last case of 0 NILL children.\\
+						First the succesor is found by the minimum node of $z$'s right child.\\
+						The the if at line 7, checks for if the MIN node is not $z$'s right child.\\
+						 If not then the min node $y$ is rotated up as the root of $z$'s right branch, with its parent as right child and the parent left child being $y$s right child.\\
+						 Then $y$ substitutes $z$ and takes $z$ left child aswell.\\
+						 
+					\end{minipage}
+				
+					
+			\subsection{Balanced binary tree}
+				The idea behind a balanced binary tree, is a node has another bit representing a color red or black.\\
+				The rule is then:
+				\begin{itemize}
+					\item The root has to be black
+					\item A red notes child can not be red
+					\item Leafs has to be black
+				\end{itemize}
+				The rules ensures that the roots childrens height will atmost be different by a factor by 2.\\
+				This is due to one branch being all black and the other being red and black all the way.\\
+				The implementation of a balanced tree will not be slower due to all the manipulations still running at constant time $O(1)$.
+				\subsubsection{Rotation of node}
+					Rotations are a needed operation on a node in order to insert and remove nodes, and still uphold balance.\\
+					\begin{figure}[h!]
+						\center
+						\includegraphics[width=300px]{assets/rotation.png}
+						\caption{Illustration of rotation}
+					\end{figure}
+					
+					\begin{minipage}{0.49\textwidth}
+						Left-Rotate(T,x)
+						\begin{algorithmic}[1]
+							\State y = x.right
+							\State x.right = y.left
+							\If {y.left != T.nil}
+								\State y.left.p =x
+							\EndIf
+							\State y.p = x.p
+							\If {x.p == T.nil}
+								\State T.root =y
+							\ElsIf {x ==x.p.left}
+								\State x.p.left = y
+							\Else 
+								\State x.p.right = y
+							\EndIf
+							\State y.left = x
+							\State x.p = y
+						\end{algorithmic}
+					\end{minipage}
+					\begin{minipage}{0.49\textwidth}
+						First y is established and $\beta$ is moved at line 2.\\
+						The if at line 3 changes the y left parent reference to x if not nil\\
+						The if at line 7 set y as root if x is root\\
+						The if at 9 and 11 sets x parents reference to x to y according to direction.
+						It can also be seen the rotation will keep inorder due to:
+						$$\alpha \leq x \leq \beta \leq  y \leq \gamma$$
+						Which is followed both before and after rotation.
+					\end{minipage}
+			\subsubsection{Insertion in tree}
+				First the new element is inserted per usual \hyperref[sec:BSTInsert]{inserting in a binary search tree} as a red node.
+				After this rebalancing may be needed, from which four sceanrios are possible:
+				\begin{enumerate}
+					\item z = root
+					\item z.uncle = red
+					\item z.uncle = black (trangle)
+					\item z.uncle = black (line)
+				\end{enumerate}
+				\begin{figure}[h!]
+					\center
+					\includegraphics[width=300px]{assets/blackRedTreeTriangeLine.png}
+					\caption{A triange shape on left and line shape on right.}
+				\end{figure}
+				1.\\
+				The nodes color should be switched to black\\
+				2.\\
+				Parent, uncle and grandparent change color\\
+				3.\\
+				Rotate z.parent in opposite direction of z\\
+				4.\\
+				Recolor parent and grandparent an rotate z.granparent in oppsite direction of z\\
+				RB-Insert-Fix(T,z)
+				\begin{algorithmic}[1]
+					\While {$z.p.color == red$}
+						\If {$z.p == z.p.p.left$}
+							\State $y = z.p.p.right$\
+							\If {$y.color == red$}
+								\State $z.p.color = BLACK$
+								\State $y.color = BLACK$
+								\State $z.p.p.color = RED$
+								\State $z = z.p.p$
+							\Else
+								\If {$z == z.p.right$}
+									\State $z = z.p$
+									\State $Left-Rotate(T,z)$
+								\EndIf
+								\State $z.p.color = BLACK$
+								\State $z.p.p.color = RED$
+								\State $Right-Rotate(T,z.p.p)$
+							\EndIf
+						\Else
+							\State line 3 - 15 but with left instead of right
+						\EndIf
+					\EndWhile	
+					\State $T.root.color = BLACK$
+				\end{algorithmic}
+				The while loop runs until, the parent node is not red.\\
+				The first check is if the current branch is to the grandparents left.\\
+				Then the uncle $y$ is defined.\\
+				Then the uncles color is checked. If red then color changes according to case 2.\\
+				If black, then if the triangle shape in case 3 is present the rotation is done. From which case 4 will accour and recolor and rotation is done.
+			\subsubsection{deletetion in tree}
+				First a deletion is done, as normal. The only difference is a fixup function is called if the removed node is black or the successor node was black.\\
+				This due to a black therefore being removed or recolored and therefore the black length is not equal on both sides of root.\\
+				The fixup function has 4 cases which has to be fixed.
+				\begin{enumerate}
+					\item red sibling
+					\item black sibling with 2 black children
+					\item black sibling and nearest child is red and furthest is black
+					\item black sibling and the furthest child is red
+				\end{enumerate}
+				The special child is x and its sibling is w\\
+				1. the parent and $w$ changes color and left rotation on parent\\
+				2. $w$ changes color to red, $x$ pointer is parent and parent is red\\
+				3. $w$ and its red child $\gamma$ changes color and right rotation is performed on $\gamma$\\
+				4. $w$ changes color to $x$'s parent, which changes color to black aswell $w$ right child. Left rotation on $x$'s parent\\
+				RB-Delete-Fix(T,x)
+				\begin{algorithmic}[1]
+					\While {$x != T.root$ and $x.color == BLACK$}
+						\If {$x== x.p.left$}
+							\State $w = x.p.right$
+							\If {$w.color == RED$}
+								\State $w.color = BLACK$
+								\State $x.p.color = RED$
+								\State $Left-Rotate(T,x,p)$
+								\State $w = x.p.right $
+							\EndIf
+							\If {$w.left.color == BLACK$ and $w.right.color == BLACK$}
+								\State $w.color = RED$
+								\State $x = x.p$
+							\Else
+								\If {$w.right.color == BLACK$}
+									\State $w.left.color = BLACK$
+									\State $w.color = RED$
+									\State $Right-Rotate(T,w)$
+									\State $w = x.p.right$
+								\EndIf
+								\State $w.color = x.p.color$
+								\State $x.p.color = BLACK$
+								\State $w.right.color = BLACK$
+								\State $Left-Rotate(T,x,p)$
+								\State $x = T.root$
+							\EndIf
+						\Else
+							\State line 3 - 25 with right and left exhanged
+						\EndIf
+					\EndWhile
+					\State $x.color = BLACK$
+				\end{algorithmic}
+				
+				The code consist of a while loop which only terminates when x is root or x is black.\\
+				This is due to if x is the root the color can be changed to black and it will have the same black length on both branches.\\
+				The while loop states by checking if the current working branch is to the parents left.\\
+				Then the first if covers case 1, and the sibling pointer moves up to $x$'s uncle.\\
+				The second if covers case 2, notice here it is guranteed due to the first case that the sibling is black.\\
+				The else covers case 3 and 4, where 3 is in the inner if. \\
+				It can here be seen that 1 can lead up to all cases, 2 does not lead up to 3 or 4 and 3 always leads up to 4.
+				
+					
+				
+					
+					
+						
+				
 			
 				
 	
