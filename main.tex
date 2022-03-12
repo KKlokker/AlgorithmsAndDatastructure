@@ -515,7 +515,7 @@ colorlinks=false,% hyperlinks will be black
 							\If {$w.color == RED$}
 								\State $w.color = BLACK$
 								\State $x.p.color = RED$
-								\State $Left-Rotate(T,x,p)$
+								\State $Left-Rotate(T,x.p)$
 								\State $w = x.p.right $
 							\EndIf
 							\If {$w.left.color == BLACK$ and $w.right.color == BLACK$}
@@ -531,7 +531,7 @@ colorlinks=false,% hyperlinks will be black
 								\State $w.color = x.p.color$
 								\State $x.p.color = BLACK$
 								\State $w.right.color = BLACK$
-								\State $Left-Rotate(T,x,p)$
+								\State $Left-Rotate(T,x.p)$
 								\State $x = T.root$
 							\EndIf
 						\Else

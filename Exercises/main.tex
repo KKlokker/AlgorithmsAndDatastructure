@@ -403,7 +403,41 @@
 				\subsubsection{$925,202,911,240,912,245,363$}
 					This is not a valid path due to 912 being under the smaller branch of 911
 			\subsection{Write code to find the predecessor / ordered node before}
-				
+				predecessor(x)
+				\begin{algorithmic}[1]
+					\While {$MIN(x.p) == x$}
+						\State $x = x.p$
+					\EndWhile
+					\State return $MIN(x.p)$
+				\end{algorithmic}
+			\subsection{Draw a red black tree insert of 36}
+				\begin{figure}[h!]
+					\center
+					\includegraphics[width=300px]{assets/week10Exercise4.png}
+					\caption{Insertion of element 36 in red-black tree}
+				\end{figure}
+				As seen on the figure, first it is inserted.\\
+				Then uncle is red so parent, uncle and granparent change color\\
+				The uncle is black and in form of triangle, the parent 30 is rotated in left direction.\\
+				The uncle is black and in form of line, so parent and grandparent change color and rigt rotation on granparent.\\
+			\subsection{What is the worst run time of an unbalanced tree, for a sorted list}
+				In the unbalanced tree the insertion will take $n$ times by making a tree of an ordered list.\\
+				The worst case will be the ordered list, where the first element is the smallest and then in an ascending order.\\
+				resulting in making a list. This making of the tree wukk here take $\frac{n(n+1)}{2}$.\\
+				Then the walk will then take $n$ time, making the total run time $O(n^2+n)$
+			\subsection{What is the worst run time of a balanced red-black tree, for a sorted list}
+				Creating the tree will take $O(n\log n)$ times, due to the height never getting over $\log n$.\\
+				There when doing the walk it takes in total $O(n\log n + n)$
+			\subsection{Argue that sorting $n$ elements with binary tree will take $\Omega(n\log n)$}
+				A insertion will take $\log n$ time.\\
+				Therefore doing that $n$ time will be $n\log n$.\\
+				The walk will take $n$ but that still make the rune time $\Omega(n\log n)$
+			\subsection{What is the difference between binary search tree and min-heap}
+				The main difference is, that in a binary search three take for instance the root, every element to the right will always be larger than the root.\\
+				Where as the min-heap is only relative to the parent which side the child i one.
+			\subsection{Describe a range search for the binary tree, with the run time $\Theta(m+\log n)$}
+				This is pretty simple. First a search is done for the first key, then a walk is done from there until the end range key is found.
+			
 				
 				
 \end{document}
