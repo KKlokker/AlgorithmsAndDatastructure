@@ -437,9 +437,66 @@
 				Where as the min-heap is only relative to the parent which side the child i one.
 			\subsection{Describe a range search for the binary tree, with the run time $\Theta(m+\log n)$}
 				This is pretty simple. First a search is done for the first key, then a walk is done from there until the end range key is found.
-			
-				
-				
+		\section{Week}
+			\subsection{Insert 18 and 26 into the given hashtable with linear opening}				
+					  \begin{table}[h!]
+								 \center
+								 \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|}
+											\hline
+											0 & 1 & 2 & 3 & 4 &5 &6 &7&8&9&10\\\hline
+											67&20&17&&33&&16&2&&&15\\\hline
+								  \end{tabular}
+					  \end{table}
+					  $$h(x)=(7x+4)\text{ mod 11}$$
+					  $h(18)=130\text{ mod 11} = 9 \text{ mod 11}$\\
+					  $h(26)=(186\text{ mod 11} = 10 \text{ mod 11}$\\
+					  But since 10 is already in use the next linear free index is 3\\
+					  \begin{table}[h!]
+								 \center
+								 \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|}
+											\hline
+											0 & 1 & 2 & 3 & 4 &5 &6 &7&8&9&10\\\hline
+											67&20&17&26&33&&16&2&&18&15\\\hline
+								  \end{tabular}
+					  \end{table}	
+			\subsection{Insert 5,28,19,15,20,33,12,17,10 into a hash table with 9 slots and $h(x)=x$ mod 9, as a chain}
+				\begin{table}[h!]
+					  \center
+					  \begin{tabular}{|l|l|l|l|l|l|l|l|l|}
+								 \hline
+								 0 & 1 & 2 & 3 & 4 &5 &6 &7&8\\\hline
+									&10,19,28&20&12&&5&15,33&&17\\\hline
+						\end{tabular}
+				\end{table}
+			\subsection{Perform hashing function on 10,22,31,4,15 with linear,quadratic, and double hashing, on mod 11 table}
+					\begin{table}[h!]
+					  \center
+					  \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|}
+								 \hline
+								 \multicolumn{11}{|c|}{Linear hash}\\
+								 \hline
+								 0 & 1 & 2 & 3 & 4 &5 &6 &7&8&9&10\\\hline
+								 22&&&&4&15&&&&31&10\\\hline
+						\end{tabular}
+				\end{table}
+				\begin{table}[h!]
+					  \center
+					  \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|}
+								  \hline
+								  \multicolumn{11}{|c|}{Quadratic (c=2) hash}\\
+								 \hline
+								 0 & 1 & 2 & 3 & 4 &5 &6 &7&8&9&10\\\hline
+								 22&&&&4&15&&&&31&10\\\hline
+						\end{tabular}
+				\end{table}
+				\begin{table}[h!]
+					  \center
+					  \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|}
+								 \hline
+								 \multicolumn{11}{|c|}{Double hash}\\
+								 \hline
+								 0 & 1 & 2 & 3 & 4 &5 &6 &7&8&9&10\\\hline
+								 22&&&&4&&&&15&31&10\\\hline
+						\end{tabular}
+				\end{table}
 \end{document}
-
-
