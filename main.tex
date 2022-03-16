@@ -228,7 +228,14 @@ colorlinks=false,% hyperlinks will be black
 				The ideal hash function will spread out objects as much as possible and a simple an reliable function being
 				$$h(k)=((a\cdot k+b) \;mod\; p)\; mod\; m$$
 				Where p is a prime larger than the size of the array and a and b are random constant integers $1\leq a \leq p-1$ and $0\leq b \leq p-1$
-				
+				\subsubsection{Open addressing}
+					An alternative to having a list as hash chain, is using different methods of finding next open position.\\
+					The following methods uses a given hash function $h(k,i)$, where $k$ is the given value, and $i$ is the shift.\\
+					For every same entry the $i$ variable is increased by 1.\\
+					\textbf{Linear hashing}: if the index is taken $i$ is added to index\\
+					\textbf{Quadratic hashing}: if the index is taken $i^2$ is added to index\\
+					\textbf{Double hashing}: If the index is taken $i\cdot h(k)$ is added.\\
+					The reason to use methods which space out index more is to prevent clustering, which can worsen search times.
 		\section{Datastructures}
 			\subsection{Priority queues}
 				Priority queues are based on the heap structure, which is described in \hyperref[sec:HeapSort]{Heap sort}.\\
