@@ -12,14 +12,14 @@
 \contentsline {section}{\numberline {3}algorithms}{9}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Divide-and-Conquer algorithms}{9}{subsection.3.1}%
 \contentsline {subsection}{\numberline {3.2}Lower bound of comparison sorting algorithms}{10}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Maximum summation of sequential elements in array}{10}{subsection.3.3}%
-\contentsline {subsection}{\numberline {3.4}Hashing}{11}{subsection.3.4}%
-\contentsline {subsubsection}{\numberline {3.4.1}Open addressing}{11}{subsubsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.3}Maximum summation of sequential elements in array}{11}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Hashing}{12}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}Open addressing}{12}{subsubsection.3.4.1}%
 \contentsline {section}{\numberline {4}Datastructures}{12}{section.4}%
 \contentsline {subsection}{\numberline {4.1}Priority queues}{12}{subsection.4.1}%
-\contentsline {subsubsection}{\numberline {4.1.1}Pseudo code}{12}{subsubsection.4.1.1}%
-\contentsline {subsection}{\numberline {4.2}Binary search tree}{13}{subsection.4.2}%
-\contentsline {subsubsection}{\numberline {4.2.1}Searching a binary tree}{13}{subsubsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.1.1}Pseudo code}{13}{subsubsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.2}Binary search tree}{14}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}Searching a binary tree}{14}{subsubsection.4.2.1}%
 \contentsline {subsubsection}{\numberline {4.2.2}Inserting in the tree}{15}{subsubsection.4.2.2}%
 \contentsline {subsubsection}{\numberline {4.2.3}Deleting a node in the tree}{16}{subsubsection.4.2.3}%
 \contentsline {subsection}{\numberline {4.3}Balanced binary tree}{16}{subsection.4.3}%

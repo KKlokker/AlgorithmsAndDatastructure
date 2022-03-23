@@ -1,6 +1,7 @@
 \documentclass[12pt, a4paper]{article}
 \usepackage{caption}
 \usepackage{graphicx}
+\usepackage{svg}
 \usepackage{hyperref}
 \usepackage{xcolor}
 \hypersetup{
@@ -183,7 +184,23 @@ colorlinks=false,% hyperlinks will be black
 		\section{algorithms}
 			\subsection{Divide-and-Conquer algorithms}
 				The same as recursive algorithms.\\
-				When illustrated a tree is often used to describe the calls and calls backs
+				When illustrated a tree is often used to describe the calls and calls backs\\
+				When finding the run time of divide and conquer algorithms, the master theorum is used.\\
+				It states:
+				$$T(n)=aT(n/b)+f(n)$$
+				Where $a$ is the amount of branches created by the algorithm and $b$ is the amount each branch elements is divided by.\\
+				$f(n)$ is the run time of the node, for sorting or creating new branches.\\
+				It can here be seen that all divide and conquer algorithms fall into 3 categories:
+				\begin{itemize}
+					\item if $f(n)=O(n^{\log_b(a)-\epsilon}$ then the run time is dominated by the leaves\\
+							  and the running time is $T(n)=\Theta(n^{\log_b(a)})$
+					\item if $f(n)=\theta(n^{\log_b(a)})$ then the run time is even on all layers of the tree\\
+						and the running time is $T(n)=\Theta(n^{\log_b(a)}\cdot \log(n)$
+			 		\item if $f(n)=\Omega(n^{\log_b(a)+\epsilon})$ then the root is the dominating rung time\\
+							  and the running time is $T(n)=\Theta(f(n))$
+				\end{itemize}
+				Where $\epsilon$ is some constant bigger than 0.\\
+				If the theorum does not apply, an alternative is writing, a tree with $a$ children at each node, the number of elements in the node $b$ and then then sum up all layers run time.
 			\subsection{Lower bound of comparison sorting algorithms}
 				To find the lower bound of comparison sorting algorithms, the comparison model can be used.\\
 				The model consist of a binary tree where every branch is a comparison, and the leafs are possible answers.\\
