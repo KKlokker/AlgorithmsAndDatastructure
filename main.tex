@@ -192,14 +192,15 @@ colorlinks=false,% hyperlinks will be black
 				$f(n)$ is the run time of the node, for sorting or creating new branches.\\
 				It can here be seen that all divide and conquer algorithms fall into 3 categories:
 				\begin{itemize}
-					\item if $f(n)=O(n^{\log_b(a)-\epsilon}$ then the run time is dominated by the leaves\\
+					\item if $f(n)=O(n^{\log_b(a)-\epsilon})$ then the run time is dominated by the leaves\\
 							  and the running time is $T(n)=\Theta(n^{\log_b(a)})$
-					\item if $f(n)=\theta(n^{\log_b(a)})$ then the run time is even on all layers of the tree\\
+					\item if $f(n)=\Theta(n^{\log_b(a)})$ then the run time is even on all layers of the tree\\
 						and the running time is $T(n)=\Theta(n^{\log_b(a)}\cdot \log(n)$
 			 		\item if $f(n)=\Omega(n^{\log_b(a)+\epsilon})$ then the root is the dominating rung time\\
 							  and the running time is $T(n)=\Theta(f(n))$
 				\end{itemize}
 				Where $\epsilon$ is some constant bigger than 0.\\
+				Remember: $O - \leq$, $\Theta - =$ and $\Omega - \geq$\\
 				If the theorum does not apply, an alternative is writing, a tree with $a$ children at each node, the number of elements in the node $b$ and then then sum up all layers run time.
 			\subsection{Lower bound of comparison sorting algorithms}
 				To find the lower bound of comparison sorting algorithms, the comparison model can be used.\\
@@ -572,7 +573,40 @@ colorlinks=false,% hyperlinks will be black
 				The second if covers case 2, notice here it is guranteed due to the first case that the sibling is black.\\
 				The else covers case 3 and 4, where 3 is in the inner if. \\
 				It can here be seen that 1 can lead up to all cases, 2 does not lead up to 3 or 4 and 3 always leads up to 4.
-				
+		\subsection{Extra data in trees}
+			When working with trees, extra information can be stored, such as amount of children in a node.\\
+			Saving the amount of children will help deduct the position of the node in a tree walk.\\
+			This kind of tree is called an order-statistic tree.\\
+			This can be done as seen here, where select returns the node at index $i$ in the walk, and rank returns the nodes index in the walk.\\[4mm]
+			\begin{minipage}{0.49\textwidth}
+				OS-Select($x$,$i$)
+				\begin{algorithmic}[1]
+					\State r = x.left.children+1\\
+					\If{$i==r$}
+						\State return $x$
+					\ElsIf{$i<r$}
+						\State return $OS-Select(x.left,i)$
+					\Else
+						\State return $OS-Select(x.right,i-r)$
+
+					\EndIf
+				\end{algorithmic}
+			\end{minipage}
+			\begin{minipage}{0.49\textwidth}
+				OS-Rank($T$,$x$)
+				\begin{algorithmic}[1]
+					\State $r = x.left.children+1$
+					\State $y = x$
+					\While{$y\neq T.root$}
+						\If{$y==y.parent.right$}
+							\State $r = r + y.parent.left.children+1$
+						\EndIf
+						\State $y = y.parent$
+					\EndWhile
+					\State return $r$
+				\end{algorithmic}
+			\end{minipage}
+			When updating the tree, it is just required to recursively from the button update the affected parents.
 					
 				
 					

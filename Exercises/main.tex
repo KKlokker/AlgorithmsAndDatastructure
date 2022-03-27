@@ -499,4 +499,41 @@
 								 22&&&&4&&&&15&31&10\\\hline
 						\end{tabular}
 				\end{table}
+		\section{Week}
+			\subsection{In a tree which stores the number of children, how to find the $i$ successor to a node?}
+				This would just require to find the index of the node with $OS-Rank$ and then subtract $i$ and perform a $OS-Select$ to find the successor.
+			\subsection{Find the number of occurences of $i < j$ and $A[i] > A[j]$ in a given array in $O(n \log n)$}
+				This can be done using an order statistic tree.\\
+				The number of inversion for an element must be the elements currents index - the correct index.\\
+				The correct index can be found in $O(\log n)$ time using order statistic tree and this is done for each element so $n$ times.\\
+				Therefore to find the sum of all inversion occurences it will take $O(n \log n)$
+			\subsection{For the following factorial code which invariants are true}
+				Factorial($n$)
+				\begin{algorithmic}[1]
+					\State $i = n$
+					\State $r = 1$
+					\While {$i > 1$}
+						\State $r = r * i$
+						\State $ i--$
+					\EndWhile
+					\State return $r$
+				\end{algorithmic}
+				 \begin{itemize}
+				 	\item $i\leq 1$ - true
+				 	\item $r = i!$ - not true
+				 	\item $r! \cdot i! = n!$ - not true
+				 	\item $r = n!/i!$ - true
+				 	\item $r=n!$ - not true
+				\end{itemize}
+				This can all be confirmed by the example $n=5,r=20,i=3$ which is a given state in the algorithm.
+			\subsection{Solve the recursion using the master theorum}
+				\subsubsection{$T(n)=4\cdot T(n/3)+n$}
+					It is seen that $f(n)=O(n^{\log_3(4)})$ so the run time is $T(n)=\Omega (n^{\log_3(4)})$
+				\subsubsection{$T(n)=T(n/2)+n^2$}
+					$f(n)=\Omega(n^{\log_2(1)+\epsilon}$ where $0 < \epsilon < 1$\\
+					run time: $T(n)=\Theta(f(n))=\Theta(n^2)$
+				\subsubsection{$T(n)=16\cdot T(n/2)+n^4+n^2$}
+					$f(n)=\Theta(n^{\log_2(16)}=\Theta(n^4)$\\
+					run time: $T(n)=\Theta(n^{\log_2(16)}\cdot \log n)=\Theta(n^4 \log n)$
+				
 \end{document}
