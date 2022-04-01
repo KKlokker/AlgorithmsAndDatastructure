@@ -530,10 +530,50 @@
 				\subsubsection{$T(n)=4\cdot T(n/3)+n$}
 					It is seen that $f(n)=O(n^{\log_3(4)})$ so the run time is $T(n)=\Omega (n^{\log_3(4)})$
 				\subsubsection{$T(n)=T(n/2)+n^2$}
-					$f(n)=\Omega(n^{\log_2(1)+\epsilon}$ where $0 < \epsilon < 1$\\
+					$f(n)=\Omega(n^{\log_2(1)+\epsilon})$ where $0 < \epsilon < 1$\\
 					run time: $T(n)=\Theta(f(n))=\Theta(n^2)$
 				\subsubsection{$T(n)=16\cdot T(n/2)+n^4+n^2$}
-					$f(n)=\Theta(n^{\log_2(16)}=\Theta(n^4)$\\
+					$f(n)=\Theta(n^{\log_2(16)})=\Theta(n^4)$\\
 					run time: $T(n)=\Theta(n^{\log_2(16)}\cdot \log n)=\Theta(n^4 \log n)$
+		\section{Week}
+			\subsection{Solve the recursion using the master theorum}
+				\subsubsection{$T(n)=2\cdot T(n/4)+1$}
+					$f(n)=\Omega(n^{\log_4(2)-\epsilon})$ where $0 < \epsilon < 1$\\
+					$f(n)=\Omega(n^{0.5})=\omega(\sqrt{n})$\\
+					Therefore $T(n)=\Theta(\sqrt{n})$
+				\subsubsection{$T(n)=2T(n-1)+n$}
+					This can not be done with the master theorem.\\
+					It can be seen in the tree the layers will be:\\
+					$n$\\
+					$2\cdot (n-1)$\\
+					$2^2\cdot (n-2)$\\
+					$2^i\cdot (n-i)$\\
+					$2^n\cdot (n-n)$\\
+					Therefore the tree have a height of $2^n$ and each will have a total run time of $O(n)$ therefore the run time will be $O(2^n\cdot n)$
+			\subsection{Rethink insertion sort as a recursive algorithm and find run time}
+				Insertion sort recursively will first sort from $1..n-1$ and then insert $A[n]$.\\
+				Therefore it will be $T(n)=(n-1)+n$ due to the insertion taking $n$ time and only 1 child being made.\\
+				The tree layers will therefore be:\\
+				$n$\\
+				$n-1$\\
+				$n-i$\\
+				$n-n$\\
+				Therefore the run time of each layer being $O(n)$ and the heioght is $n$ so the total run time is $O(n^2)$
+			\subsection{Use strassens algorithm on the following two matrices}
+				$\begin{bmatrix}1&3\\ 7&5\end{bmatrix}\begin{bmatrix}6&8\\ 4&2\end{bmatrix}$\\
+				$p1=1(8-2)=6$\\
+				$p2=(1+3)2=8$\\
+				$p3=(7+5)6=72$\\
+				$p4=5(4-6)=-10$\\
+				$p5=(1+5)(6+2)=48$\\
+				$p6=(3-5)(4+2)=-12$\\
+				$p7=(1-7)(6+8)=-84$\\
+				$\begin{bmatrix}48-10-8-12&6+8\\ 72-10&6+48-72+84\end{bmatrix}=\begin{bmatrix}18&14\\ 62&66\end{bmatrix}$
+			\subsection{Find the upper and lower bound using the master theorem}
+				$$T(n)=4T(n/2)+n^2\log n$$
+				$\log_2(4)=0.5$ \\
+				Lower bound $f(n)=\Theta(n^{0.5})$\\
+				Upper bound $f(n)=\Omega( n^{0.5+4.5})$
+					
 				
 \end{document}

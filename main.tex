@@ -201,7 +201,27 @@ colorlinks=false,% hyperlinks will be black
 				\end{itemize}
 				Where $\epsilon$ is some constant bigger than 0.\\
 				Remember: $O - \leq$, $\Theta - =$ and $\Omega - \geq$\\
-				If the theorum does not apply, an alternative is writing, a tree with $a$ children at each node, the number of elements in the node $b$ and then then sum up all layers run time.
+				If the theorum does not apply, an alternative is writing, a tree with $a$ children at each node, the number of elements in the node $b$ and then then sum up all layers run time.\\[4mm]
+				There is instances where to function may fall into two of the cases, for example $T(n)=@T(n/2)+n\log n$.\\
+				This case it will fall between case 1 and 2 and can only be found through the tree method.\\
+				It shall be noted that, in the case of an uneven divide of the tree, but it does not matter in the runtime since it will only differ with a few constants.
+				\subsubsection{Strassen matrix multiplikation}
+					Strassen mutliplikation is an algorithm which recursively split up a matrix such the run time get to $O(n^2)$ over the normal calculation method which takes $O(n^3)$\\
+					In a given matrix over the size 2x2 the matrix will be divided up in four matrix of each corner. Then strassen discovered a method such only 7 calculation is needed in a 2x2 matrix instead of 8. This therefore makes the problem into a $T(n)=7T(n/2)+n^2$, 7 from the amount of problems, n/2 by the matrix size always halfing and $n^2$ for each  of the 7 problems taking. Therfore makign the runtime $O(n^2)$ using the master theorum.
+					The 7 calculation is:
+					$\begin{bmatrix}a&b\\ c&d\end{bmatrix}\begin{bmatrix}e&f\\ g&h\end{bmatrix}=\begin{bmatrix}p5+p4-p2+p6&p1+p2\\ p3+p4&p1+p5-p3-p7\end{bmatrix}$
+					\begin{itemize}
+						\item $p1=a(f-h)$
+						\item $p2=(a+b)h$
+						\item $p3=(c+d)e$
+						\item $p4=d(g-e)$
+						\item $p5=(a+d)(e+h)$
+						\item $p6=(b-d)(g+h)$
+						\item $p7=(a-c)(e+f)$
+					\end{itemize}
+				\subsubsection{Dynamic programming}
+					Dynamic programming is used in recursive algorithms which may have, recalculate a lot of subtasks.\\
+					A classic example is fibonacci sequence, where the results are stored in an array, such when f(n)=f(n-1)+f(n-2) is calculated only the first time it is recursively calculated and f(n-2) has already all values in the array.
 			\subsection{Lower bound of comparison sorting algorithms}
 				To find the lower bound of comparison sorting algorithms, the comparison model can be used.\\
 				The model consist of a binary tree where every branch is a comparison, and the leafs are possible answers.\\

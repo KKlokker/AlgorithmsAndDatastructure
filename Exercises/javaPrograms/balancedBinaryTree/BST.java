@@ -2,7 +2,7 @@ public class BST {
     public static void main(String[] args){
         Tree test = new Tree(null, null, null, 11, "test", true);
         insert(test, new Tree(null,null,null, 2, "test", true));
-        insert(test, new Tree(null,null,null, 4, "test", true));
+        insert(test, new Tree(null,null,null, 4, "test", false));
         insert(test, new Tree(null,null,null, 14, "test", true));
         while(test.parent != null)
             test = test.parent;
@@ -25,7 +25,7 @@ public class BST {
             y.left = x;
         else
             y.right = x;
-        //insertFix(x);
+        insertFix(x);
     }
 
     public static void insertFix(Tree z) {
