@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.1.12)  23 MAR 2022 17:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.1.12)  6 APR 2022 15:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -842,60 +842,94 @@ Package pdftex.def Info: assets/heapAsArray.png  used on input line 134.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[7] [8 <./assets/heapAsArray.png>] [9]
-Underfull \hbox (badness 10000) in paragraph at lines 205--212
+[7] [8 <./assets/heapAsArray.png>] [9] [10]
+<assets/LCS.png, id=212, 725.71124pt x 636.3775pt>
+File: assets/LCS.png Graphic file (type png)
+<use assets/LCS.png>
+Package pdftex.def Info: assets/LCS.png  used on input line 230.
+(pdftex.def)             Requested size: 301.1261pt x 264.0626pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Overfull \hbox (66.28278pt too wide) in paragraph at lines 236--237
+[]\OT1/cmr/m/n/12 They do not match, so it re-turns max(LCS(n.substring(1),m),L
+CS(n,m.substring(1)) 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 243--250
 
  []
 
-[10] [11] [12]
-Underfull \hbox (badness 10000) in paragraph at lines 280--281
+[11] [12 <./assets/LCS.png>] [13] [14]
+Underfull \hbox (badness 10000) in paragraph at lines 318--319
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 293--294
+Underfull \hbox (badness 10000) in paragraph at lines 331--332
 
  []
 
-[13] [14] [15]
-Underfull \hbox (badness 4454) in paragraph at lines 405--415
+[15] [16] [17]
+Underfull \hbox (badness 4454) in paragraph at lines 443--453
 \OT1/cmr/m/n/12 Which then switches node1 and
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 405--415
+Underfull \hbox (badness 10000) in paragraph at lines 443--453
 
  []
 
-[16
+[18
 
 ]
-<assets/rotation.png, id=239, 491.58656pt x 137.01187pt>
+<assets/rotation.png, id=252, 491.58656pt x 137.01187pt>
 File: assets/rotation.png Graphic file (type png)
 <use assets/rotation.png>
-Package pdftex.def Info: assets/rotation.png  used on input line 434.
+Package pdftex.def Info: assets/rotation.png  used on input line 472.
 (pdftex.def)             Requested size: 301.1261pt x 83.93044pt.
 
-Overfull \hbox (12.44019pt too wide) in paragraph at lines 438--467
+Overfull \hbox (12.44019pt too wide) in paragraph at lines 476--505
 []$[]$ $[]$ 
  []
 
-[17 <./assets/rotation.png>]
-<assets/blackRedTreeTriangeLine.png, id=247, 1053.9375pt x 455.7025pt>
+[19 <./assets/rotation.png>]
+<assets/blackRedTreeTriangeLine.png, id=261, 1053.9375pt x 455.7025pt>
 File: assets/blackRedTreeTriangeLine.png Graphic file (type png)
 <use assets/blackRedTreeTriangeLine.png>
 Package pdftex.def Info: assets/blackRedTreeTriangeLine.png  used on input line
- 478.
+ 516.
 (pdftex.def)             Requested size: 301.1261pt x 130.20337pt.
-[18 <./assets/blackRedTreeTriangeLine.png>] [19] [20] [21] (./main.aux)
-Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: C1771F989A224D18719B0215A37CEB19;4229.
+[20 <./assets/blackRedTreeTriangeLine.png>] [21] [22]
+Underfull \hbox (badness 10000) in paragraph at lines 639--640
+[] $\OML/cmm/m/it/12 r \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 r \OT1/cmr/m/n/12 +
+ []
+
+
+Overfull \hbox (27.77614pt too wide) in paragraph at lines 614--647
+[]$ $[]$ \OT1/cmr/m/n/12 When
+ []
+
+[23] (./main.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `main.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `main.out':
+(rerunfilecheck)             Before: C1771F989A224D18719B0215A37CEB19;4229
+(rerunfilecheck)             After:  1590731DA5FD99E7A23D52DC9022DBD1;4985.
  ) 
 Here is how much of TeX's memory you used:
- 28950 strings out of 478353
- 537738 string characters out of 5854635
+ 28964 strings out of 478353
+ 537961 string characters out of 5854635
  865978 words of memory out of 5000000
- 46496 multiletter control sequences out of 15000+600000
+ 46502 multiletter control sequences out of 15000+600000
  412530 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  110i,8n,106p,458b,466s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -911,10 +945,10 @@ public/amsfonts/cm/cmr17.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts
 sr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf
 -dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/typ
 e1/public/cm-super/sfrm1200.pfb>
-Output written on main.pdf (21 pages, 409974 bytes).
+Output written on main.pdf (23 pages, 432664 bytes).
 PDF statistics:
- 348 PDF objects out of 1000 (max. 8388607)
- 288 compressed objects within 3 object streams
- 63 named destinations out of 1000 (max. 500000)
- 257 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 363 PDF objects out of 1000 (max. 8388607)
+ 300 compressed objects within 3 object streams
+ 70 named destinations out of 1000 (max. 500000)
+ 262 words of extra memory for PDF output out of 10000 (max. 10000000)
 

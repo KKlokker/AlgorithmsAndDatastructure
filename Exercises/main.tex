@@ -574,6 +574,35 @@
 				$\log_2(4)=0.5$ \\
 				Lower bound $f(n)=\Theta(n^{0.5})$\\
 				Upper bound $f(n)=\Omega( n^{0.5+4.5})$
-					
-				
+	\section{Week}
+		\subsection{Master theoreom on recursions}
+			\begin{enumerate}
+				\item $T(n)=2T(n/2)+1$
+				\item $T(n)=3T9n/3)+n$
+				\item $T(n)=4T(n/4)+n\log n$
+				\item $T(n)=5T(n/5)+n^2$
+			\end{enumerate}
+			\subsubsection{Solve the recursions}
+				For all the recursions the $\log_b(a)$ is 1.\\
+				Therefore making them:
+				\begin{enumerate}
+					\item $T(n)=\Theta(n)$
+					\item $T(n)=\Theta( n \log\cdot n)$
+					\item $T(n)=\Theta(n\log \cdot n)$
+					\item $T(n)=\Theta(n^2)$
+				\end{enumerate}
+		\subsection{True or false?}
+			\begin{itemize}
+					  \item 1 is $O(2)$ - true
+						\item 1 is $\Omega(2)$ - true
+						\item $n$ is $O(n^2)$ - true
+						\item $n$ is $\Omega(n^2)$ - false
+						\item $3x+2x^2+x^3$ is $\Theta(x+2x^2+3x^3)$ - true
+						\item $\log n$ is $o(n/\log n)$ - true
+						\item $n^{0.5}$ is $o(n/2^n)$ - false
+						\item $\log n$ is $\omega(\log n)$ -false
+						\item $2^n\cdot \log n$ is $\omega(2^n)$ - true
+						\item $n^2/\log n$ is $O(n(\log n)^2)$ - false
+			\end{itemize}
+			
 \end{document}

@@ -222,6 +222,23 @@ colorlinks=false,% hyperlinks will be black
 				\subsubsection{Dynamic programming}
 					Dynamic programming is used in recursive algorithms which may have, recalculate a lot of subtasks.\\
 					A classic example is fibonacci sequence, where the results are stored in an array, such when f(n)=f(n-1)+f(n-2) is calculated only the first time it is recursively calculated and f(n-2) has already all values in the array.
+				\subsubsection{Longest common subsequence}
+					To find the longest common subsequence of two string a 2D dyncamic approach can be taken.\\
+					The common subsequence is the lenght of the sequence which can be found in both strings.\\
+					\begin{figure}[h!]
+							  \centering
+							  \includegraphics[width=300px]{assets/LCS.png}
+							  \caption{A 2D image of finding the longest subsequence}
+					\end{figure}
+					When finding the sequence it starts and the first character of each string. From here there are 3 cases:
+					\begin{itemize}
+							  \item They match, so it returns LCS(n.substring(1),m.substring(1))
+								\item They do not match, so it returns max(LCS(n.substring(1),m),LCS(n,m.substring(1))
+								\item One of the strings are empty, returns 0
+					\end{itemize}
+					This is illustrated by, the first case an arrow is diagonal, second two arrow to the right and down are created. The last case is at the border where no subsequence is possible.\\
+					As seen it will create a path of longest sequence.\\
+					The run time is $O(mn)$ and it will also store $mn$ spaces.
 			\subsection{Lower bound of comparison sorting algorithms}
 				To find the lower bound of comparison sorting algorithms, the comparison model can be used.\\
 				The model consist of a binary tree where every branch is a comparison, and the leafs are possible answers.\\
