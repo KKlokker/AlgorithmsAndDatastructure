@@ -604,5 +604,39 @@
 						\item $2^n\cdot \log n$ is $\omega(2^n)$ - true
 						\item $n^2/\log n$ is $O(n(\log n)^2)$ - false
 			\end{itemize}
+	\section{Week}
+		\subsection{Create huffman tree from the following data}
+			a-300, b-150, c-75, d-125, e-200, f-50, g-100\\[4mm]
 			
+			1000\\
+			----425\\
+			-------200e\\
+			-------225\\
+			----------125\\
+			-------------50f\\
+			-------------75c\\
+			----------100g\\
+			----575\\
+			-------275\\
+			----------125d\\
+			----------150b\\
+			-------300g
+	\subsection{Describe an algorithm whihc find schedules and amount of room needed for lectures}
+		This can be a greedy, it can then go through each lecture in order of the lecture starting time.\\
+		Then it goes through each room at tries to see if it fits. If it fits insert it if not go to next room.\\
+		This will result in the optimal solutions, due to a new lecture hall will only be opened in case of enough other lectures overlap. The solution will not be optimal packed such most lectures are after eachother but the solution will still be optimal.
+	\subsection{Argue that just taking the shortest lecture will not work, what about least overlapping?}
+		The first can be argued with a counter example of lecture\\
+		10-13\\
+		13-14\\
+		10-11\\
+		11-15\\
+		Taking the shortest will result 3 halls and the optimal result if 2 halls.\\
+		The same example shows again that the least overlapping will not work, due to the shortest overlapping the least and therefore the same order is used, such 3 halls is needed.
+	\subsection{Describe an algorithm which finds the shortest span of sums between given points}
+		THis would be done with greedy algorithm. By taking the points in descending order it will find the optimal solution.\\
+		It will not match such every point will get the shortest possible match, but rather the sum of all will even out to be optimal.\\
+		Let say in an example with the points 1,5,6,9 the optimal solution will be 1-5 and 6-9 even though 5-6 is shorter.
+	\subsection{Prove that in a file of characters the huffman algorithm will not be compressed if the highest frequency is less than half of least frequent}
+		For 256 characters the worst case scenario is a tree with the height of 255, therefore the least frequenct charater having a bit length of 254. The worst case tree will therefore only optimze upon 9 character which afterwards will have a bit length longer than 8. Therefore with only half a frequency more, this will mean that the saved space on the first 9 caracters will not outweight the unsaved space on the rest 245 characters even the half as frequent.
 \end{document}

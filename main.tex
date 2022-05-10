@@ -291,6 +291,22 @@ colorlinks=false,% hyperlinks will be black
 					\textbf{Quadratic hashing}: if the index is taken $i^2$ is added to index\\
 					\textbf{Double hashing}: If the index is taken $i\cdot h(k)$ is added.\\
 					The reason to use methods which space out index more is to prevent clustering, which can worsen search times.
+			\subsection{Greedy algorithm}
+				A greedy algorithm is an algorithm which takes the first possible solution. This will always find a local optimum, which may not be global optimal.\\
+				The algorithm is based upon taking the problem and taking the best solution at the moment.\\
+				To use a greedy algorithm it is important the find and argument for an invariant which holds true such the solution it will find is an optimum.\\[4mm]
+				An example to this type of problem is a packing example. The packages have each a weight and a value.\\
+				A greedy algorithm will here each package and find it value pr. weight, it then fills up with the most value pr. weight, if there is not enough space it goes to the next package.\\
+			\subsection{Bit compression using Huffmans algorithm}
+				Huffmans algorithm is a compression algorithm based on shortening bits using frequency.\\
+				An example is word shortening, in ASCII a charachter is represented with 8 bits.\\
+				But by finding the frequency of each character, the most used characters, can have a shorter bit code.\\
+				In order to assign each character a bit code, a tree is made.\\
+				Each charchter and its frequency is made as a leaf. Then the two lowest frequency nodes are combined such the two nodes are leafs in a tree where the parent is the combined frequency and the parent is now in upon all nodes.\\
+				This is repeated until a true binary tree is made. Then each character is then assigned a bit code by going to the right in the tree will equal to 1 and left equal to 0.\\[4mm]
+				This is greedy algorithm which finds the optimum, which can be argued by at first the tree is optimum of two characters.\\
+				Then for a the two scenarios where one tree is split such it has a depth of 1+ another tree, it can be seen that, due to the frequency and the single bit in difference, the difference will be constant, therefore neglible. Such that the found tree will always be the optimal tree.\\[4mm]
+				The run time will then be $O(n\log n)$ using a heap algorithm and finding frequency is just $O(n)$, so neglible.
 		\section{Datastructures}
 			\subsection{Priority queues}
 				Priority queues are based on the heap structure, which is described in \hyperref[sec:HeapSort]{Heap sort}.\\
