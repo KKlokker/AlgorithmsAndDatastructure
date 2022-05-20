@@ -1,3 +1,5 @@
+package balancedBinaryTree;
+
 public class BST {
     public static void main(String[] args){
         Tree test = new Tree(null, null, null, 11, "test", true);

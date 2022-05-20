@@ -661,7 +661,147 @@ colorlinks=false,% hyperlinks will be black
 			\end{minipage}
 			When updating the tree, it is just required to recursively from the button update the affected parents.
 					
+						\subsection{Disjoint sets}
+			Disjoint sets being small partitions of a set.\\
+			There are different ways of representing this in a datastructure.\\
+			The core of the datastructures are:
+			\begin{itemize}
+				\item Create a new set
+				\item Join two sets
+				\item Find set
+			\end{itemize}
+			\subsubsection{Linked list representation}
+				A linked list may be used for the dijoint set. Find set will be constant time and return header of linked list.\\
+				Make set also be constant creating a new linked list.\\
+				Union must be $n$ time due to one lists reference the header must be changed and other list last node must be linked furhter.\\
+				Weighted-union heuristic is a union where the lower lsit is added to the larger list.\\
+				Path compression refers to all object in a branch is moved up to be only a depth of 1.\\
+				Thus for a making a set of $n$ objects, the run time will be $O(m+n\log n)$, this is due to$\log n$ comes from joining, but since it is done with two sets of same size, the total size will double. Therefore it is only required to perform $\log n$ joins, which is done $n$ times. The $m$ is the amount of find set operations, which is each done in constant time and therefore the total is $m$ time.\\[4mm]
+			\subsubsection{Tree representation}
+				Another alternative is a tree, where a object in node is representative and root. Find will therefore travel up the tree until found root, make will make its own root, union takes the tree with biggest height as root and make the joining child of the root.\\
+				The make set of $n$ and its union and find set will therefore be almost linear with a run time of $O(n+m)$ with $m$ being a slow growing function.\\
+				Union by rank refers to making the union tree the optimal height, such when two trees are unioned, the larger tree becomes root such the height is the same, if the same height one is choosen and the height is added by 1.\\
+				Path compression is done on find operations. When root is searched for every nodes in the path to find root parent will be set to root, in constant time. Such the height of the tree wil lbe 1.
+	\section{Graph}
+		Naming conventions:
+		\begin{itemize}
+			\item Oriented graph - directed graph
+			\item Unoriented graph - non directed
+			\item Weighted graph - edges has a value
+			\item $V$ the set of all vertices
+			\item $E$ the set of all edges
+			\item $n=|V|$,$m=|E|$
+			\item $0\leq m\leq n^2$ for oriented and $0\leq m \leq n^2/2$ for unoriented graph
+		\end{itemize}
+		\subsection{Representation}
+			Graph may be setup as a graph.\\
+			List may also be used for each node containing connected vertices.\\
+			A matrix can also be used with size $n^2$ if $n_1$ and $n_3$ are connected a 1 is at $n_1,n_3$ and also $n_3,n_1$ .\\
+			Therefore in theory the actual size is $n^2/2$ due to it being reflective in an unoriented graph and oriented needs the $n^2$ due to it not being reflective.\\
+			Wheras the list version need $O(n+m)$ space
+		\subsection{Graph traversal}
+			To create a traversal a color coding is used on the vertices.
+			\begin{itemize}
+				\item white - no edges are used
+				\item grey - some edges are used
+				\item black - all edges are used
+			\end{itemize}
+			At the basic the traversal is done by:
+			\begin{algorithmic}[1]
+				\State GenericGraphTraversal(s)
+				\State s.color = grey
+				\While{There exists grey vertices}
+					\State v = grey vertice
+					\If{All edges in v are used}
+						\State v.color = black
+					\Else 
+						\State Choose an unused edge in v, u
+						\If {u.color == white}
+							\State u.color = grey
+						\EndIf
+					\EndIf
+				\EndWhile
 				
+			\end{algorithmic}
+			Once the algorithm is done all black nodes is connected to $S$ and all white nodes are not.\\
+			For finding edges there are different algorithms such as:
+			\begin{itemize}
+				\item Breadth-First-Search
+				\item Depth-First-Search
+				\item Priority-Search
+			\end{itemize}
+			In some cases it may be needed to save for each which node discovered it.\\
+			With this info a tree may be made from each node or leaf to root will exist the opposite path in the graph.\\
+			\subsubsection{Breadth first traversal}
+				This algorithm, start at a vertice, uses all possible edges and then goes to the next vertice.\\
+				This algorithm is therefore presented in a queue format.\\
+				The idea is all vertices are white and have a distance of infinity.\\
+				Then at a vertice the distance is 0, then all vertices directly connected are greyed and gets a distance +1.\\
+				Also the added by variable is added.\\
+				Then each vertice is added to the queue and everything is ran until the queue is empty.\\
+				This will result in every node has the shortest distance, due to essencially every node being taken in order of distance to root and therefore once a node is reached it is the shortest distance.\\
+			\subsubsection{Depth first traversal}
+				This method is a recursive method, and therefore is refered to using the stack.\\
+				The method works by every node is white, and the one choosen is made grey.\\
+				A recursive function is then called on a connected node, which makes it grey and call the recursive function on all connected nodes.\\
+				By this every connected node will be found recursively. This is seen in the stack by when a node is called it is added to the stack and becomes grey, once every connected node is found and popped of the stack it returns to the grey node and it becomes black and pops off.\\
+				Instead of measuring distance a time variable is made, this time variable is added once a node is discovered and once the node turns black.\\
+				At both the start and the end of the node the time is saved, such given two nodes (v,u) there relation can be described through their time:
+				\begin{itemize}
+					\item v and u tims are disjoint and they are note related
+					\item v's time interval container u times interval and v is some form of parent to u
+					\item the last scenario but flipped around
+				\end{itemize}
+				The time interval is often written as $s/e$ where $s$ is the start and $e$ is end time\\
+				When doing the traversal there are 4 different types of edges which may be classified:
+				\begin{itemize}
+					\item Tree edge - The most common edge from parent to undiscovered child
+					\item Back edge - Edge from child to an anchestor  
+					\item Forward edge - Edge from anchestor to some form of existing child
+					\item Cross edge - The rest of the edges, mainly edges between branches
+				\end{itemize}
+				In non oriented graph only tree and back edges exists.\\[4mm]
+				Sorting may also be done, if there does not exist any back edges.\\
+				No back edges will result in no cycles, and when each vertic is done it can be added to a list.\\
+				This will result in every vertice will only point to the right and be in topological order.
+		\subsection{Strongly connected compoenents}
+			To find strongly connected components Kosarajus algorithm can be used.\\
+			The algorithm start be doing a DFS on the graph. Once a node is turned black it is added to a second stack. The order should be decreasing in $u.f$ for each vertex $u$\\
+			Then the graphs directions are reversed.\\
+			Again DSF is performed, and starts at the end of the second stack. Once the selected stack element is popped off all the traversed nodes is strongly connected.\\
+			All other traversed notes in the strongly connected may be also popped of the second stack.\\
+			This is done until the second stack is empty.\\
+			When reversing the graph all connected components will stay the same due to the SCC's be definition are cycles and can get all around. Whereas the connecting edges between SCC's are cross edges, and by reversing them it is seen that before connected components no longer are connected therefore splitting the connected components.\\
+			The reasoning for the reverse topological order, is due to in the topological order, SCC's will be found last, due to them not being connected to the first choosen node.\\
+			Therefore be reversing it the strongly conncected components are found earlier and fewer nodes are checked.\\
+			This result in the running time being $O(|n|+|e|)$
+		\subsection{MST}
+			A minimal spanning tree (MST) is a tree which visits every node in a weighted graph, at minimal cose.\\
+			This will form a tree and therefore can not contain any cycles.\\
+			\subsubsection{Prim Jarnik}
+				This is a greedy algorithm, which work with a queue.\\
+				A node is then choosen from which all edges is added to the queue.\\
+				The minimum is then choosen and used in the tree, which all edges from to not used nodes are inserted to the queue.\\
+				The last step is then repeated until the queue is empty, and when meeting a dead edge it is discarded.\\
+				This will result in a MST if the graph is all connected, due to the invariant being always choosing the best edge until all edges are evaluated, therefore all edges will be checked.
+			\subsubsection{Kruskal}
+				Kruskal works by, taking all edges, sorting them in order weight increasing, and then adding all edges which, connects two otherwise unconnected edges.\\
+				This can be done by sets in the following algorithm:
+				\begin{algorithmic}[1]
+					\State A = Ø
+					\For{$v\in G.V$}
+						\State $Make-Set(v)$
+					\EndFor
+					\State Sort sets in weight 
+					\For{$(u,v)$ from sorted list}
+						\If{$Find-Set(u)\neq Find-Set(v)$}
+							\State $A=A\cup \{(u,v)\}$
+							\State $Union(u,v)$
+						\EndIf
+					\EndFor
+					\State return $A$
+				\end{algorithmic}
+				This will work by same argument as Prim Jarnik, but this will gurantee a better MST, in case of a bad start for Prim Jarnik.
 					
 					
 						

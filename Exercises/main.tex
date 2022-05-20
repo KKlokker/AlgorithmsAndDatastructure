@@ -621,22 +621,110 @@
 			----------125d\\
 			----------150b\\
 			-------300g
-	\subsection{Describe an algorithm whihc find schedules and amount of room needed for lectures}
-		This can be a greedy, it can then go through each lecture in order of the lecture starting time.\\
-		Then it goes through each room at tries to see if it fits. If it fits insert it if not go to next room.\\
-		This will result in the optimal solutions, due to a new lecture hall will only be opened in case of enough other lectures overlap. The solution will not be optimal packed such most lectures are after eachother but the solution will still be optimal.
-	\subsection{Argue that just taking the shortest lecture will not work, what about least overlapping?}
-		The first can be argued with a counter example of lecture\\
-		10-13\\
-		13-14\\
-		10-11\\
-		11-15\\
-		Taking the shortest will result 3 halls and the optimal result if 2 halls.\\
-		The same example shows again that the least overlapping will not work, due to the shortest overlapping the least and therefore the same order is used, such 3 halls is needed.
-	\subsection{Describe an algorithm which finds the shortest span of sums between given points}
-		THis would be done with greedy algorithm. By taking the points in descending order it will find the optimal solution.\\
-		It will not match such every point will get the shortest possible match, but rather the sum of all will even out to be optimal.\\
-		Let say in an example with the points 1,5,6,9 the optimal solution will be 1-5 and 6-9 even though 5-6 is shorter.
-	\subsection{Prove that in a file of characters the huffman algorithm will not be compressed if the highest frequency is less than half of least frequent}
-		For 256 characters the worst case scenario is a tree with the height of 255, therefore the least frequenct charater having a bit length of 254. The worst case tree will therefore only optimze upon 9 character which afterwards will have a bit length longer than 8. Therefore with only half a frequency more, this will mean that the saved space on the first 9 caracters will not outweight the unsaved space on the rest 245 characters even the half as frequent.
+		\subsection{Describe an algorithm whihc find schedules and amount of room needed for lectures}
+			This can be a greedy, it can then go through each lecture in order of the lecture starting time.\\
+			Then it goes through each room at tries to see if it fits. If it fits insert it if not go to next room.\\
+			This will result in the optimal solutions, due to a new lecture hall will only be opened in case of enough other lectures overlap. The solution will not be optimal packed such most lectures are after eachother but the solution will still be optimal.
+		\subsection{Argue that just taking the shortest lecture will not work, what about least overlapping?}
+			The first can be argued with a counter example of lecture\\
+			10-13\\
+			13-14\\
+			10-11\\
+			11-15\\
+			Taking the shortest will result 3 halls and the optimal result if 2 halls.\\
+			The same example shows again that the least overlapping will not work, due to the shortest overlapping the least and therefore the same order is used, such 3 halls is needed.
+		\subsection{Describe an algorithm which finds the shortest span of sums between given points}
+			THis would be done with greedy algorithm. By taking the points in descending order it will find the optimal solution.\\
+			It will not match such every point will get the shortest possible match, but rather the sum of all will even out to be optimal.\\
+			Let say in an example with the points 1,5,6,9 the optimal solution will be 1-5 and 6-9 even though 5-6 is shorter.
+		\subsection{Prove that in a file of characters the huffman algorithm will not be compressed if the highest frequency is less than half of least frequent}
+			For 256 characters the worst case scenario is a tree with the height of 255, therefore the least frequenct charater having a bit length of 254. The worst case tree will therefore only optimze upon 9 character which afterwards will have a bit length longer than 8. Therefore with only half a frequency more, this will mean that the saved space on the first 9 caracters will not outweight the unsaved space on the rest 245 characters even the half as frequent.
+	\section{Week}
+		\subsection{Show the data strcture result of the following code, using linked list}
+			\begin{algorithmic}[1]
+				\For{$i=1$ to $16$}
+					\State Make-Set($x_i$)
+				\EndFor
+				\For{$i=1$ to $15$ by $2$}
+					\State Union($x_i,x_{i+1}$)
+				\EndFor
+				\For{$i=1$ to $13$ by $4$}
+					\State Union($x_i,x_{i+2}$)
+				\EndFor
+				\State Union($x_1,x_5$)
+				\State Union($x_{11},x_{13}$)
+				\State Union($x_1,x_{10}$)
+				\State Find-Set($x_2$)
+				\State Find-Set($x_9$)
+			\end{algorithmic}
+			$[x_1,x_2,x_3,x_4,x_5,x_6,x_7,x_8,x_9,x_{10},x_{11},x_{12},x_{13},x_{14},x_{15},x_{16}]$\\
+			Therefore the Find-Set will both return $x_1$
+		\subsection{Perform the former task as a disjoint fores using union by rank and path compression}
+			This does not really change anything due to all unions and finds are called on nodes which are the first child to root anyways.
+		\subsection{Find the solutions for the following recursivefunctions}
+			\subsubsection{$T(n)=2T(n/3)+n$}
+				$\log_3(2)\approx 0.63$\\
+				$f(n)=\Omega (n^{0.64}) \rightarrow T(n)=\theta (f(n))$\\
+				$T(n)=n$
+			\subsubsection{$T(n)=32T(n/4)+n^{2.5}$}
+				$\log_4(32)=2.5$\\
+				$f(n)=\theta(n^{2,5})\rightarrow T(n)=\theta(n^{2.5}\cdot \log(n))$
+		\subsection{Which of the following are true or false}
+			\begin{itemize}
+				\item $n^2$ is $O(n^2)$ - true
+				\item $n^2$ is $\theta(n^2)$ - true
+				\item $n^4$ is $O(5n^3+3n^5)$ - true
+				\item $n^4$ is $\theta(5n^3+3n^5)$ - false
+				\item $n\log n$ is $O(n^{1.5})$ - true
+				\item $n$ is $O(\log n)$ - false
+				\item $(\log n)^{10}$ is $O(n^{0.1})$ - false
+				\item $1$ is $O(n)$ - true
+				\item $n^2$ is $o(n^3)$ - true
+				\item $n^3$ is $\omega(n^2)$ - false
+			\end{itemize}
+		\subsection{Perform Build-Max-Heap on the following array}
+			$$[5,4,3,2,1,10,9,8,7,6]$$
+			$$[10, 8, 9, 7, 6, 3, 5, 2, 4, 1]$$
+		\subsubsection{Insert into the following hash array the values 3,5,15}
+			The table use double hashing using the following functions:
+				$$h_1(x)=(5x+1)\; mod\; 13$$
+				$$h_2(x)=1+(x\; mod\;12)$$
+			H:$18,\;,8,\;,\;,6,\;,\;,30,25,\;,2,23$\\
+			$h_1(3)=3$\\
+			H:$18,\;,8,3,\;,6,\;,\;,30,25,\;,2,23$\\
+			$h_1(5)=0$\\
+			$h_2(5)=8$\\
+			since 8 is used, then it goes 16 mod 13 = 3 which is not open. 11 is not either, but 19 mod 13 = 6 is not.\\
+			H:$18,\;,8,3,\;,6,5,\;,30,25,\;,2,23$\\
+			$h_1(15)=11$\\
+			$h_2(15)=4$\\
+			15 mod 13 = 2, 6, 10\\
+			H:$18,\;,8,3,\;,6,\;,\;,30,25,15,2,23$\\
+		\subsubsection{Perform Radix-Sort(A,4) on the following array}
+			$$A:[8345,7112,1830,5001,4345,2222,9112,6363]$$
+			
+			$A:[1830, 5001, 7112, 2222, 9112, 6363, 8345, 4345]$\\
+			$A:[5001, 7112, 9112, 2222, 1830, 8345, 4345, 6363]$\\
+			$A:[5001, 7112, 9112, 2222, 8345, 4345, 6363, 1830]$\\
+			$A:[1830, 2222, 4345, 5001, 6363, 7112, 8345, 9112]$
+		\subsubsection{Use a huffman tree on the following frequency chart, and find codes and total size of file}
+			freq\\
+			a:400\\
+			e:750\\
+			i:300\\
+			o:150\\
+			u:200\\
+			y:100\\[4mm]
+			
+			Codes:\\
+			a: 111\\
+			e: 0\\
+			u: 100\\
+			y: 1010\\
+			i: 110\\
+			o: 1011\\
+			The filesize after compression is: 4450
+			
+			
+			
 \end{document}

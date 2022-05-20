@@ -1,3 +1,5 @@
+package balancedBinaryTree;
+
 public class Tree {
     public Tree parent, left, right;
     public int key;
