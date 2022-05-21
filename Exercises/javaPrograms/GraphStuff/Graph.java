@@ -1,4 +1,4 @@
-package MST;
+package GraphStuff;
 
 import java.util.ArrayList;
 import java.util.List;

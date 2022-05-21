@@ -1,4 +1,4 @@
-package MST;
+package GraphStuff;
 
 public class Set {
     public Set parent;

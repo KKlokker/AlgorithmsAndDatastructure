@@ -1,4 +1,4 @@
-package MST;
+package GraphStuff;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -33,6 +33,7 @@ public class Kruskal {
         g.add(0, 1, 1);
         g.add(0, 3, 1);
         g.add(1, 4, 1);
+        g.add(4, 0, -3);
         g.add(2, 4, 1);
         g.add(2, 5, 1);
         g.add(3, 1, 1);
@@ -50,7 +51,6 @@ public class Kruskal {
       
         for(int info: topologicalSort(g))
             System.out.println(info);
-*/
 
         g.print();
         
@@ -60,6 +60,11 @@ public class Kruskal {
                 System.out.print(i + ", ");
             System.out.println("");
         }       
+        */
+
+        for(int i: relaxHandler(g,0))
+            System.out.println("Length is: " + i);
+        System.out.println(bellmanFord(g, 0));
     }
 
     public static List<List<Integer>> SCC(Graph graph) {
@@ -77,7 +82,33 @@ public class Kruskal {
         return sccs;
     }
 
-    //Relax, bellman ford and dijkstras
+    public static List<Integer> relaxHandler(Graph graph, int start) {
+        List<Integer> shortestPath = new ArrayList<>();
+        for(int i = 0; i <= graph.size; i++)
+            shortestPath.add(99999);
+        shortestPath.set(start,0);
+        
+        for(int x = 0; x < graph.size; x++)
+            for(int y = 0; y < graph.size(x); y++)
+                relax(graph, x, y, shortestPath);
+        return shortestPath;
+    }
+
+    
+    public static void relax(Graph graph,int x, int y,List<Integer> SP) {
+        if(graph.get(x, y) != null && SP.get(y) > SP.get(x) + graph.get(x, y))
+            SP.set(y, SP.get(x) + graph.get(x, y));        
+    }
+
+    public static boolean bellmanFord(Graph graph, int vertex) {
+        List<Integer> shortestPath = relaxHandler(graph, vertex);
+        for(int x = 0; x < graph.size; x++)
+            for(int y = 0; y < graph.size(x); y++)
+                if(graph.get(x, y) != null && shortestPath.get(y) > shortestPath.get(x) + graph.get(x, y))
+                    return false;
+        return true;
+    }
+    //bellman ford and dijkstras
 
     public static List<Integer> topologicalSort(Graph graph) {
         List<int[]> order = new ArrayList<>();

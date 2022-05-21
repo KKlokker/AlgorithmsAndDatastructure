@@ -1,4 +1,4 @@
-package MST;
+package GraphStuff;
 
 public class Edge implements Comparable{
     public int from, to, cost;
