@@ -32,3 +32,18 @@
 \contentsline {subsubsection}{\numberline {4.3.2}Insertion in tree}{21}{subsubsection.4.3.2}%
 \contentsline {subsubsection}{\numberline {4.3.3}deletetion in tree}{22}{subsubsection.4.3.3}%
 \contentsline {subsection}{\numberline {4.4}Extra data in trees}{24}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Disjoint sets}{24}{subsection.4.5}%
+\contentsline {subsubsection}{\numberline {4.5.1}Linked list representation}{25}{subsubsection.4.5.1}%
+\contentsline {subsubsection}{\numberline {4.5.2}Tree representation}{25}{subsubsection.4.5.2}%
+\contentsline {section}{\numberline {5}Graph}{25}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Representation}{26}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Graph traversal}{26}{subsection.5.2}%
+\contentsline {subsubsection}{\numberline {5.2.1}Breadth first traversal}{27}{subsubsection.5.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.2}Depth first traversal}{27}{subsubsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.3}Strongly connected compoenents}{28}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}MST}{29}{subsection.5.4}%
+\contentsline {subsubsection}{\numberline {5.4.1}Prim Jarnik}{29}{subsubsection.5.4.1}%
+\contentsline {subsubsection}{\numberline {5.4.2}Kruskal}{29}{subsubsection.5.4.2}%
+\contentsline {subsubsection}{\numberline {5.4.3}Relax}{30}{subsubsection.5.4.3}%
+\contentsline {subsubsection}{\numberline {5.4.4}Dijkstras}{30}{subsubsection.5.4.4}%
+\contentsline {subsubsection}{\numberline {5.4.5}Bellman ford}{30}{subsubsection.5.4.5}%

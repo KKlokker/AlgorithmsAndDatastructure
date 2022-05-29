@@ -802,8 +802,16 @@ colorlinks=false,% hyperlinks will be black
 					\State return $A$
 				\end{algorithmic}
 				This will work by same argument as Prim Jarnik, but this will gurantee a better MST, in case of a bad start for Prim Jarnik.
-					
-					
+			\subsubsection{Relax}
+				Relax is a method which, simply works by a handler, which goes through every edge and sends it to the relax method.\\
+				This method simply handles a new edge and compare to an already known lightest weight. This weight the lightest is saved.
+			\subsubsection{Dijkstras}
+				This method is a more sophisticated version of relax. Instead of just trying every edge, a start edge is selected. Then every edge from the start node is added to a minimum queue. Then a loop is done until the queue is empty.\\
+				The minumum edge in weight is choosen and the receiving nodes edges is added to the queue and called relax upon.\\
+				Every used node is saved, such if an edge from the queue is choosen towards an already checked node, the edge is dumped.\\
+			\subsubsection{Bellman ford}
+				Bellman ford is a tool to check if a graph has a negative loop such a MST is not existing.\\
+				The tool simply works by using relax to get the MST, and then for every edge tries to see if adding it will result in a lower weight. Therefore if that exist a negative loop in the graph it will return true.
 						
 				
 			
