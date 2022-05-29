@@ -7,9 +7,13 @@ import java.util.stream.Stream;
 public class minMaxHeap {
     
     public static void main(String[] args) {
-        ArrayList<Integer> heap = (ArrayList<Integer>) Stream.of(5,4,3,2,1,10,9,8,7,6).collect(Collectors.toList());
-        MaxHeap maxHeap = new MaxHeap(heap);
-        maxHeap.heap.stream().forEach((i) -> System.out.print(i + ", "));
+        ArrayList<Integer> heap = (ArrayList<Integer>) Stream.of(2,4,3,7,7,5,6,8,9).collect(Collectors.toList());
+        MinHeap minHeap = new MinHeap(heap);
+        minHeap.heap.stream().forEach(i -> System.out.print(i+", "));
+        System.out.println("x");
+        minHeap.extractMin();
+        minHeap.insert(1);
+        minHeap.heap.stream().forEach(i -> System.out.print(i+", "));
     }
 
 

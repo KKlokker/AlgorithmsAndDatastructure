@@ -30,6 +30,7 @@ public class Kruskal {
         g.add(6, 8, 6);
         g.add(7, 8, 7);
         */
+        /*
         g.add(0, 1, 1);
         g.add(0, 3, 1);
         g.add(1, 4, 1);
@@ -38,6 +39,17 @@ public class Kruskal {
         g.add(2, 5, 1);
         g.add(3, 1, 1);
         g.add(4, 3, 1);
+        */
+        g.add(0,1,10);
+        g.add(0,3,5);
+        g.add(1,2,1);
+        g.add(1,3,2);
+        g.add(2,4,4);
+        g.add(3,1,3);
+        g.add(3,2,9);
+        g.add(3,4,2);
+        g.add(4,2,6);
+        g.add(4,0,7);
         /*
         int cost = 0;
         for(Edge e: prim(g,0)) {
@@ -62,8 +74,9 @@ public class Kruskal {
         }       
         */
 
-        for(int i: relaxHandler(g,0))
+        for(int i: dijkstras(g,0))
             System.out.println("Length is: " + i);
+
         System.out.println(bellmanFord(g, 0));
     }
 
@@ -108,7 +121,41 @@ public class Kruskal {
                     return false;
         return true;
     }
-    //bellman ford and dijkstras
+
+    public static List<Integer> dijkstras(Graph graph, int start) {
+        PriorityBlockingQueue<Edge> vertexQueue = new PriorityBlockingQueue<>();
+        List<Integer> shortestPath = new ArrayList<>();
+        for(int i = 0; i <= graph.size; i++)
+            shortestPath.add(99999);
+        shortestPath.set(start,0);
+        boolean[] used = new boolean[graph.size()+1];
+        used[start] = true;
+        Arrays.fill(used, false);
+        for(int j = 0; j < graph.size(start); j++) {
+                if(graph.get(start,j)!=null)vertexQueue.add(new Edge(start, j, graph.get(start, j)));
+                relax(graph, start, j, shortestPath);
+        }
+        int to;
+        do {
+            try {
+                to = (vertexQueue.size() == 0) ? start: vertexQueue.take().to;
+            
+                if(!used[to]) {
+                    used[to] = true;
+                    for(int j = 0; j < graph.size(to); j++) 
+                        if(graph.get(to,j)!=null){
+                            vertexQueue.add(new Edge(to, j, graph.get(to, j)));
+                            relax(graph, to, j, shortestPath);
+                        }
+                    
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        while(vertexQueue.size() > 0);
+        return shortestPath;
+    }
 
     public static List<Integer> topologicalSort(Graph graph) {
         List<int[]> order = new ArrayList<>();
