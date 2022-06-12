@@ -3,10 +3,23 @@ package quicksort;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Stream;
 
 public class mergeSort {
     public static void main(String[] args){
+        System.out.println("sad");
+        int[] A = new int[]{21,17,28,14,9,17,6,1,26,15,30,7,13,19,2};
+        Partition(A, 0, 7);
+        for(int i: A)
+            System.out.print(i + ", ");
+            System.out.println("sad");
+            int[] A2 = new int[]{2,8,7,1,3,5,6,4};
+            Partition(A2, 4, 13);
+            for(int i: A2)
+                System.out.print(i + ", ");
+        /*
         File file = new File("data.csv");
         try {
             FileWriter outputfile = new FileWriter(file);
@@ -26,6 +39,7 @@ public class mergeSort {
         catch (IOException e) {
             e.printStackTrace();
         }
+        */
     }
     //0.001153 is the average sorting time for element length, before optimzation and using the last element always as x
     //After optimazation it got not really better and now is 0.001155 due to the random number but in sorted arrays it should be better
@@ -70,8 +84,25 @@ public class mergeSort {
             }
         array[r] = array[i];
         array[i] = x;
-        sort(array,p,i-1);
-        sort(array, i+1, r);
+        //sort(array,p,i-1);
+        //sort(array, i+1, r);
     }
+
+    public static void Partition(int[] A, int p, int r) {
+        int x = A[r];
+        int i = p-1;
+        for(int j = p; j < r-1; j++) {
+            if(A[j] <=x) {
+                i++;
+                int temp = A[i];
+                A[i] = A[j];
+                A[j] = temp;
+            }
+        }
+        int temp = A[i+1];
+        A[i+1] = A[r];
+        A[r] = temp;
+    } 
+
     
 }

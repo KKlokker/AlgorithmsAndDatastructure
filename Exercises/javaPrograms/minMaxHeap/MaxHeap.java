@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 public class MaxHeap {
-    public ArrayList<Integer> heap;
+    public static ArrayList<Integer> heap;
 
     public MaxHeap() {
         heap = new ArrayList<>();
@@ -57,13 +57,14 @@ public class MaxHeap {
             int temp = A.get(i);
             A.set(i, A.get(parent(i)));
             A.set(parent(i), temp);
+            System.out.println("Switched: " + A.get(i) + " " + A.get(parent(i)));
             i = parent(i);
         }
     }
 
-    public void heapInsert(ArrayList<Integer> A, int key) {
-        A.add(key);
-        heapIncreaseKey(A, A.size(), key);
+    public void heapInsert(int key) {
+        heap.add(key);
+        heapIncreaseKey(heap,heap.size()-1, key);
     }
 
     private int left(int i) {
@@ -77,6 +78,6 @@ public class MaxHeap {
 
     
     private int parent(int i) {
-        return i/2;
+        return (i-1)/2;
     }
 }

@@ -67,6 +67,8 @@ public class Graph {
     }
 
     public Integer get(int x, int y) {
+        if(matrix.size() <= x || matrix.get(x).size() <= y)
+            return null;
         return matrix.get(x).get(y);
     }
 

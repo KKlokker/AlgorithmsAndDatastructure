@@ -54,7 +54,7 @@ public class MinHeap {
         if(key < A.get(i))
             return;
         A.set(i, key);
-        while(i > 0 && A.get(parent(i))<A.get(i)) {
+        while(i > 0 && A.get(parent(i))>A.get(i)) {
             int temp = A.get(i);
             A.set(i, A.get(parent(i)));
             A.set(parent(i), temp);
@@ -124,7 +124,7 @@ public class MinHeap {
     }
     
     private int parent(int i) {
-        return i/2;
+        return (i-1)/2;
     }
     
 }

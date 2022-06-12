@@ -10,8 +10,6 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Kruskal {
-    //a,b,c,d,e,f,g,h,i,j,k
-    //0,1,2,3,4,5,6,7,8,9,10
     public static void main(String[] args) {
         Graph g = new Graph(true);
         /*
@@ -30,6 +28,29 @@ public class Kruskal {
         g.add(6, 8, 6);
         g.add(7, 8, 7);
         */
+    //a,b,c,d,e,f,g,h,i,j,k
+    //0,1,2,3,4,5,6,7,8,9,10
+    //a,d,e,g,b,c,f,h,i DFS
+    /*
+        g.add(0, 3, 4);
+        g.add(0, 6, 8);
+        g.add(1, 2, 11);
+        g.add(2, 1, 8);
+        g.add(2, 5, 7);
+        g.add(3, 4, 4);
+        g.add(3, 6, 2);
+        g.add(4, 3, 9);
+        g.add(4, 0, 14);
+        g.add(5, 1, 10);
+        g.add(5, 6, 2);
+        g.add(6, 7, 1);
+        g.add(6, 8, 6);
+        g.add(6, 1, 7);
+        g.add(7, 6, 7);
+        g.add(7, 3, 7);
+        g.add(7, 5, 7);
+        g.add(8, 0, 7);
+        g.add(8, 1, 7);
         /*
         g.add(0, 1, 1);
         g.add(0, 3, 1);
@@ -40,16 +61,79 @@ public class Kruskal {
         g.add(3, 1, 1);
         g.add(4, 3, 1);
         */
-        g.add(0,1,10);
-        g.add(0,3,5);
-        g.add(1,2,1);
-        g.add(1,3,2);
-        g.add(2,4,4);
-        g.add(3,1,3);
-        g.add(3,2,9);
-        g.add(3,4,2);
-        g.add(4,2,6);
-        g.add(4,0,7);
+        //a,g,c,h,e,f,b,d,
+    //a,b,c,d,e,f,g,h,i,j,k
+    //0,1,2,3,4,5,6,7,8,9,10
+    /* BFS
+        g.add(0,6,10);
+        g.add(1,2,5);
+        g.add(1,7,1);
+        g.add(2,0,2);
+        g.add(2,7,4);
+        g.add(3,8,3);
+        g.add(3,9,9);
+        g.add(3,7,2);
+        g.add(4,3,6);
+        g.add(4,1,7);
+        g.add(4,7,7);
+        g.add(4,5,7);
+        g.add(5,4,7);
+        g.add(5,1,7);
+        g.add(6,2,7);
+        g.add(6,9,7);
+        g.add(7,6,7);
+        g.add(7,9,7);
+        g.add(7,3,7);
+        g.add(7,4,7);
+        g.add(8,3,7);
+        g.add(8,9,7);
+        //a,d,g,i,h,b,c,f,e
+    //a,b,c,d,e,f,g,h,i,j,k
+    //0,1,2,3,4,5,6,7,8,9,10
+    */
+    g.add(0, 6, 7);
+    g.add(0, 1, 4);
+    g.add(1, 2, 1);
+    g.add(1, 3, 2);
+    g.add(2, 0, 2);
+    g.add(2, 5, 6);
+    g.add(3, 2, 1);
+    g.add(3, 5, 4);
+    g.add(4, 2, 8);
+    g.add(5, 4, 1);
+    g.add(6, 4, 6);
+    g.add(6, 2, 4);
+    //a,b,c,d,e,f,g,h,i,j,k
+    //0,1,2,3,4,5,6,7,8,9,10
+    //b,d,c,e,a
+    /*
+    g.add(1, 0, 1);
+    g.add(1, 2, 1);
+    g.add(1, 3, 1);
+    g.add(1, 4, 1);
+    g.add(2, 4, 1);
+    g.add(3, 0, 1);
+    g.add(3, 4, 1);
+    g.add(5, 4, 1);
+    g.add(5, 2, 1);
+    */
+    //a,b,c,d,e,f,g,h,i,j,k
+    //0,1,2,3,4,5,6,7,8,9,10
+    //a,e,c,d,b,f
+    //a,e,d,f
+/*
+    Graph g = new Graph(false);
+    g.add(0, 2, 6);
+    g.add(0, 4, 8);
+    g.add(0, 6, 9);
+    g.add(1, 3, 5);
+    g.add(1, 6, 3);
+    g.add(1, 7, 11);
+    g.add(2, 3, 2);
+    g.add(2, 5, 12);
+    g.add(3, 6, 7);
+    g.add(4, 5, 0);
+    g.add(6, 7, 10);
         /*
         int cost = 0;
         for(Edge e: prim(g,0)) {
@@ -73,11 +157,26 @@ public class Kruskal {
             System.out.println("");
         }       
         */
+        Graph ug = new Graph(false);
+        //a,b,c,d,e,f,g,h
+        //0,1,2,3,4,5,6,7
+        ug.add(4, 0, 8);
+        ug.add(0, 6, 9);
+        ug.add(6, 7, 10);
+        ug.add(4, 5, 0);
+        ug.add(0, 2, 6);
+        ug.add(6, 3, 7);
+        ug.add(6, 1, 3);
+        ug.add(7, 1, 11);
+        ug.add(5, 2, 12);
+        ug.add(3, 2, 2);
+        ug.add(1, 3, 5);
+        char[] alf = new char[]{'a','b','c','d','e','f','g','h','i'};
+        int[] d = dijkstras(g, 0);
+        for(int i = 0; i < d.length; i++)
+            System.out.println(alf[i] + " " + d[i]);
+        
 
-        for(int i: dijkstras(g,0))
-            System.out.println("Length is: " + i);
-
-        System.out.println(bellmanFord(g, 0));
     }
 
     public static List<List<Integer>> SCC(Graph graph) {
@@ -95,11 +194,9 @@ public class Kruskal {
         return sccs;
     }
 
-    public static List<Integer> relaxHandler(Graph graph, int start) {
-        List<Integer> shortestPath = new ArrayList<>();
-        for(int i = 0; i <= graph.size; i++)
-            shortestPath.add(99999);
-        shortestPath.set(start,0);
+    public static int[] relaxHandler(Graph graph, int start) {
+        int[] shortestPath = new int[graph.size()+1];
+        Arrays.fill(shortestPath, Integer.MAX_VALUE);
         
         for(int x = 0; x < graph.size; x++)
             for(int y = 0; y < graph.size(x); y++)
@@ -107,95 +204,119 @@ public class Kruskal {
         return shortestPath;
     }
 
-    
-    public static void relax(Graph graph,int x, int y,List<Integer> SP) {
-        if(graph.get(x, y) != null && SP.get(y) > SP.get(x) + graph.get(x, y))
-            SP.set(y, SP.get(x) + graph.get(x, y));        
+    public static int test = 0;
+    public static void relax(Graph graph,int x, int y,int[] SP) {
+        System.out.println(test++);
+        if(graph.get(x, y) != null && SP[y] > SP[x] + graph.get(x, y)) 
+            SP[y] =  SP[x] + graph.get(x, y);
     }
 
     public static boolean bellmanFord(Graph graph, int vertex) {
-        List<Integer> shortestPath = relaxHandler(graph, vertex);
+        int[] shortestPath = relaxHandler(graph, vertex);
         for(int x = 0; x < graph.size; x++)
             for(int y = 0; y < graph.size(x); y++)
-                if(graph.get(x, y) != null && shortestPath.get(y) > shortestPath.get(x) + graph.get(x, y))
+                if(graph.get(x, y) != null && shortestPath[y] > shortestPath[x] + graph.get(x, y))
                     return false;
         return true;
     }
 
-    public static List<Integer> dijkstras(Graph graph, int start) {
-        PriorityBlockingQueue<Edge> vertexQueue = new PriorityBlockingQueue<>();
-        List<Integer> shortestPath = new ArrayList<>();
-        for(int i = 0; i <= graph.size; i++)
-            shortestPath.add(99999);
-        shortestPath.set(start,0);
-        boolean[] used = new boolean[graph.size()+1];
-        used[start] = true;
-        Arrays.fill(used, false);
-        for(int j = 0; j < graph.size(start); j++) {
-                if(graph.get(start,j)!=null)vertexQueue.add(new Edge(start, j, graph.get(start, j)));
-                relax(graph, start, j, shortestPath);
+    public static int[] dijkstras(Graph graph, int start) {
+        PriorityBlockingQueue<verticeAndDistance> vertexQueue = new PriorityBlockingQueue<>();
+        int[] shortestPath = new int[graph.size()+1];
+        List<verticeAndDistance> vertices = new ArrayList<>();
+
+        for(int i = 0; i < graph.size()+1; i++) {
+            vertices.add(new verticeAndDistance(i, 9999+i)); //+i to force order
+            vertexQueue.add(vertices.get(i));
         }
-        int to;
-        do {
+        vertices.get(start).distance = 0;
+        do{
+            verticeAndDistance v;
             try {
-                to = (vertexQueue.size() == 0) ? start: vertexQueue.take().to;
-            
-                if(!used[to]) {
-                    used[to] = true;
-                    for(int j = 0; j < graph.size(to); j++) 
-                        if(graph.get(to,j)!=null){
-                            vertexQueue.add(new Edge(to, j, graph.get(to, j)));
-                            relax(graph, to, j, shortestPath);
-                        }
+                v = vertexQueue.take();
+                //System.out.println("Looking at " + v.vertice);
+                for(int i = 0; i < graph.size(v.vertice); i++) {
+                    if(graph.get(v.vertice, i) != null && vertices.get(i).distance > v.distance + graph.get(v.vertice, i)) {
+                        vertices.get(i).distance =  v.distance + graph.get(v.vertice, i);
+                        System.out.println("Used: " + v.vertice + " - " + i);
+                    }
                     
+                    //else if(graph.get(v.vertice, i) != null) System.out.println("Did not use: " + v.vertice + " - " + i);
                 }
+          
             } catch (InterruptedException e) {
                 e.printStackTrace();
-            }
+            }                      
         }
         while(vertexQueue.size() > 0);
+        for(int i = 0; i < vertices.size(); i++)
+            shortestPath[i] = vertices.get(i).distance;
         return shortestPath;
     }
 
-    public static List<Integer> topologicalSort(Graph graph) {
-        List<int[]> order = new ArrayList<>();
+    static class verticeAndDistance implements Comparable {
+        public int vertice, distance;
         
-        for(int[] info: DFS(graph))
+        public verticeAndDistance(int vertice, int distance) {
+            this.vertice = vertice;
+            this.distance = distance;
+        }
+
+        public int compareTo(Object v) {
+            return this.distance - ((verticeAndDistance) v).distance;
+        }
+
+    }
+
+    public static List<Integer> topologicalSort(Graph graph) {
+        List<Integer[]> order = new ArrayList<>();
+        
+        for(Integer[] info: DFS(graph))
             if(order.size() == 0) order.add(info);
             else 
                 for(int i = 0; i < order.size(); i++) //quick and dirty linear sort
                     if(order.get(i)[2] < info[2]) {order.add(i,info); i = order.size();}
         List<Integer> orderedVertex = new ArrayList<>();
-        for(int[] info: order)
+        for(Integer[] info: order)
             orderedVertex.add(info[0]);
         return orderedVertex;
     }
 
-    public static List<int[]> DFS(Graph graph) {
-        List<int[]> dfs = new ArrayList<>();
+    public static Integer[][] DFS(Graph graph) {
+        Integer[][] dfs = new Integer[graph.size()+1][3];
         boolean[] visited = new boolean[graph.size()+1];
         Arrays.fill(visited, false);
         AtomicInteger time = new AtomicInteger(0);
         
-        for(int i = 0; i < graph.size; i++)
+        for(int i = 0; i <= graph.size; i++)
             if(!visited[i])
-                dfs.add(DFSVisit(time, graph, i,visited, dfs));
+                DFSVisit(time, graph, i,visited, dfs);
         return dfs;
     }
 
-    private static int[] DFSVisit(AtomicInteger time, Graph graph, int vertex,boolean[] visited, List<int[]> dfs) {
-        int[] edgeInfo = new int[3]; //vertex#, distance, finish
-        edgeInfo[0] = vertex;
+    private static void DFSVisit(AtomicInteger time, Graph graph, int vertex,boolean[] visited, Integer[][] dfs) {
+        System.out.println("Visited: " + vertex);
+        dfs[vertex][0] = vertex;
         time.incrementAndGet();
-        edgeInfo[1] = time.get();
+        dfs[vertex][1] = time.get();
         visited[vertex] = true;
         for(int i = 0; i < graph.size(vertex); i++)
-            if(graph.get(vertex, i) != null && !visited[i]) 
-                dfs.add(DFSVisit(time, graph, i,visited, dfs));
-        
+            if(graph.get(vertex, i) != null && !visited[i]) {
+                DFSVisit(time, graph, i,visited, dfs);
+                System.out.println("Tree edge: " +  vertex + " - " + i);
+            }
+            else if(graph.get(vertex, i) != null) {
+                if(dfs[i][2] != null) {
+                    if(dfs[vertex][1] < dfs[i][1]) 
+                        System.out.println("Forward edge: " + vertex + " - " + i);
+                    else 
+                        System.out.println("Cross Edge: " + vertex + " - " + i);
+                }
+                else 
+                    System.out.println("Back edge: " + vertex + " - " + i);
+            }
         time.incrementAndGet();
-        edgeInfo[2] = time.get();
-        return edgeInfo;
+        dfs[vertex][2] = time.get();
     }
 
     private static List<Integer> DFSVisitForSCC(Graph graph, int vertex,boolean[] visited) {
@@ -209,6 +330,32 @@ public class Kruskal {
         return scc;
     }
 
+    private static int[][] BFS(Graph graph, int start) {
+        //[distance][foundBy]
+        int[][] bfs = new int[graph.size()+1][2];
+        bfs[start][0] = 0;
+        bfs[start][1] = -1;
+        boolean[] visited = new boolean[graph.size()+1];
+        Arrays.fill(visited, false);
+        visited[start] = true;
+        List<Integer> queue = new ArrayList<>();
+        queue.add(start);
+        while(!queue.isEmpty()) {
+            int u = queue.remove(0);
+            System.out.print(u + ", ");
+            for(int i = 0; i < graph.size(u); i++) 
+                if(graph.get(u, i) != null 
+                && !visited[i]) {
+                    visited[i] = true;
+                    bfs[i][0] = bfs[u][0]+1;
+                    bfs[i][1] = u;
+                    queue.add(i);
+                }
+        }
+        System.out.println();
+        return bfs;
+    }
+
     public static List<Edge> kruskal(Graph graph) {
         List<Set> vertex = new ArrayList<>();
         for(int i = 0; i<=graph.size; i++)
@@ -219,6 +366,9 @@ public class Kruskal {
             if(Set.find(vertex.get(edge.from)) != Set.find(vertex.get(edge.to))) {
                 MST.add(edge);
                 Set.link(Set.find(vertex.get(edge.from)),Set.find(vertex.get(edge.to)));
+            }
+            else {
+                System.out.println("Did not use: " + edge.from + " - " + edge.to);
             }
         }
         return MST;

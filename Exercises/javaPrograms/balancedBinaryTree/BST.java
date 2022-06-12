@@ -1,14 +1,32 @@
 package balancedBinaryTree;
 
+import java.security.Key;
+
 public class BST {
     public static void main(String[] args){
-        Tree test = new Tree(null, null, null, 11, "test", true);
-        insert(test, new Tree(null,null,null, 2, "test", true));
-        insert(test, new Tree(null,null,null, 4, "test", false));
-        insert(test, new Tree(null,null,null, 14, "test", true));
-        while(test.parent != null)
-            test = test.parent;
-        print(test);
+        Tree root = new Tree(null, null, null, 24, "test", false);
+        Tree left = new Tree(root,null,null, 18, "test", true);
+        Tree t1 =  new Tree(root,null,null, 26, "test", false);
+        Tree t2 =  new Tree(left,null,null, 5, "test", false);
+        Tree t3 =  new Tree(left,null,null, 20, "test", false);
+        Tree t4 =  new Tree(t2,null,null, 2, "test", true);
+        Tree t5 =  new Tree(t2,null,null, 7, "test", true);
+        Tree t6 =  new Tree(t3,null,null, 23, "test", true);
+        Tree t7 =  new Tree(t1,null,null, 27, "test", true);
+
+        root.left = left;
+        root.right = t1;
+        t1.right = t7;
+        left.left = t2;
+        left.right = t3;
+        t2.left = t4;
+        t2.right = t5;
+        t3.right= t6;
+        
+        print(root);
+        insert(root, new Tree(null, null, null, 21, "test", true));
+        
+        print(root);
     }
 
     
@@ -22,6 +40,7 @@ public class BST {
             else
                 t = t.right;
         }
+        System.out.println(y.key);
         x.parent = y;   
         if(x.key < y.key)
             y.left = x;
@@ -33,6 +52,7 @@ public class BST {
     public static void insertFix(Tree z) {
         if(z.parent != null && z.parent.parent != null) {
             while(z.parent.isRed) {
+                System.out.println(z.key);
                 if(z.parent == z.parent.parent.left) {
                     Tree y = z.parent.parent.right;
                     if(y != null && y.isRed) {
@@ -53,7 +73,8 @@ public class BST {
                 }
                 else {
                     Tree y = z.parent.parent.left;
-                    if(y.isRed) {
+                    System.out.println(z.parent.parent.key);
+                    if(y != null && y.isRed) {
                         z.parent.isRed = false;
                         y.isRed = false;
                         z.parent.parent.isRed = true;
