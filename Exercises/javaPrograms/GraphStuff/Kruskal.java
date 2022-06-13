@@ -91,6 +91,7 @@ public class Kruskal {
     //a,b,c,d,e,f,g,h,i,j,k
     //0,1,2,3,4,5,6,7,8,9,10
     */
+    /*
     g.add(0, 6, 7);
     g.add(0, 1, 4);
     g.add(1, 2, 1);
@@ -157,26 +158,88 @@ public class Kruskal {
             System.out.println("");
         }       
         */
-        Graph ug = new Graph(false);
-        //a,b,c,d,e,f,g,h
-        //0,1,2,3,4,5,6,7
-        ug.add(4, 0, 8);
-        ug.add(0, 6, 9);
-        ug.add(6, 7, 10);
-        ug.add(4, 5, 0);
-        ug.add(0, 2, 6);
-        ug.add(6, 3, 7);
-        ug.add(6, 1, 3);
-        ug.add(7, 1, 11);
-        ug.add(5, 2, 12);
-        ug.add(3, 2, 2);
-        ug.add(1, 3, 5);
-        char[] alf = new char[]{'a','b','c','d','e','f','g','h','i'};
-        int[] d = dijkstras(g, 0);
-        for(int i = 0; i < d.length; i++)
-            System.out.println(alf[i] + " " + d[i]);
+        Graph ug = new Graph(true);
+        //a,b,c,d,e,f,g,h,i
+        //0,1,2,3,4,5,6,7,8
+        /* G1
+        ug.add(1, 0, 8);
+        ug.add(1, 2, 9);
+        ug.add(1, 5, 10);
+        ug.add(2, 3, 0);
+        ug.add(2, 6, 6);
+        ug.add(3, 7, 7);
+        ug.add(4, 3, 3);
+        ug.add(4, 8, 11);
+        ug.add(5, 0, 12);
+        ug.add(6, 5, 2);
+        ug.add(6, 1, 5);
+        ug.add(7, 2, 5);
+        ug.add(7, 8, 5);
+        ug.add(8, 3, 5);
+        */
+        //a,b,c,d,e,f,g,h,i
+        //0,1,2,3,4,5,6,7,8
+        /* G2
+        ug.add(0, 1, 8);
+        ug.add(1, 5, 9);
+        ug.add(1, 6, 10);
+        ug.add(2, 1, 0);
+        ug.add(2, 6, 6);
+        ug.add(2, 3, 7);
+        ug.add(3, 7, 3);
+        ug.add(4, 8, 11);
+        ug.add(4, 3, 12);
+        ug.add(5, 0, 2);
+        ug.add(5, 6, 5);
+        ug.add(7, 2, 5);
+        ug.add(7, 8, 5);
+        ug.add(8, 3, 5);
+        */
+        //a,b,c,d,e,f,g,h,i
+        //0,1,2,3,4,5,6,7,8
+        Graph g3 = new Graph(false);        
+        g3.add(5, 6, 8);
+        g3.add(7, 8, 9);
+        g3.add(0, 5, 3);
+        g3.add(5, 1, 5);
+        g3.add(1, 6, 2);
+        g3.add(6, 2, 6);
+        g3.add(2, 7, 9);
+        g3.add(7, 3, 6);
+        g3.add(3, 8, 7);
+        g3.add(8, 4, 1);
+        g3.add(0, 1, 4);
+        g3.add(1, 2, 1);
+        g3.add(2, 3, 8);
+        g3.add(3, 4, 7);
         
-
+        /*
+        g4.add(2,1,1);
+        g4.add(8,4,1);
+        g4.add(6,1,2);
+        g4.add(5,0,3);
+        g4.add(1,0,4);
+        g4.add(5,1,5);
+        g4.add(6,2,6);
+        g4.add(7,3,6);
+        */
+        char[] alf = new char[]{'a','b','c','d','e','f','g','h','i'};
+        //int[] d = dijkstras(g, 0);
+        //for(int i = 0; i < d.length; i++)
+        //    System.out.println(alf[i] + " " + d[i]);
+        /*
+        System.out.println("SCC");
+        for(List<Integer> l: SCC(ug)) {
+            for(int d: l) System.out.print(d + ", ");
+            System.out.println();
+        }
+        */
+        //int[][] d = BFS(ug,2);
+        //for(int i =0; i<d.length; i++)
+        //    System.out.println(i + ": " + d[i][0] + " - " + d[i][1]);
+        List<Edge> e = kruskal(g3);
+        for(Edge b: e) 
+            System.out.println(b.from + " - " + b.to);
     }
 
     public static List<List<Integer>> SCC(Graph graph) {
@@ -343,11 +406,12 @@ public class Kruskal {
         while(!queue.isEmpty()) {
             int u = queue.remove(0);
             System.out.print(u + ", ");
-            for(int i = 0; i < graph.size(u); i++) 
+            for(int i = 0; i <= graph.size(u); i++) 
                 if(graph.get(u, i) != null 
                 && !visited[i]) {
                     visited[i] = true;
                     bfs[i][0] = bfs[u][0]+1;
+                    if(bfs[i][0] == 3) System.out.println("Found: " +i);
                     bfs[i][1] = u;
                     queue.add(i);
                 }
@@ -363,12 +427,13 @@ public class Kruskal {
         List<Edge> MST = new ArrayList<>();
         List<Edge> sortedEdge = graph.sortedEdge();
         for(Edge edge: sortedEdge) {
+            System.out.println("g4.add("+edge.from+","+edge.to+","+edge.cost+");");
             if(Set.find(vertex.get(edge.from)) != Set.find(vertex.get(edge.to))) {
                 MST.add(edge);
                 Set.link(Set.find(vertex.get(edge.from)),Set.find(vertex.get(edge.to)));
             }
             else {
-                System.out.println("Did not use: " + edge.from + " - " + edge.to);
+                //System.out.println("Did not use: " + edge.from + " - " + edge.to);
             }
         }
         return MST;

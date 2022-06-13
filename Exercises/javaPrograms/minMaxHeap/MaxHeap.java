@@ -33,7 +33,18 @@ public class MaxHeap {
         return sorted;
     }
 
+    public int ExtractMax() {
+        int temp = heap.get(heap.size()-1);
+        heap.set(heap.size()-1, heap.get(0));
+        heap.set(0, temp);
+        
+        int max = heap.remove(heap.size()-1);
+        maxHeapify(heap, 0);
+        return max;
+    }
+
     public void maxHeapify(ArrayList<Integer> A, int i) {
+        System.out.println(A.get(i));
         int l = left(i);
         int r = right(i);
         int largest = i;

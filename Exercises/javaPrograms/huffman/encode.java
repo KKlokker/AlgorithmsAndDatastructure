@@ -13,13 +13,13 @@ Rasmus Wissing Kallehauge    - rakal21@student.sdu.dk
 public class encode {
     public static void main(String[] args){
 
-
         Element[] frequency = new Element[]{
-            new Element(200,new Tree(null,null,'a')),
-            new Element(250,new Tree(null,null,'b')),
-            new Element(100,new Tree(null,null,'c')),
-            new Element(350,new Tree(null,null,'d')),
-            new Element(400,new Tree(null,null,'e'))};
+            new Element(500,new Tree(null,null,'a')),
+            new Element(400,new Tree(null,null,'b')),
+            new Element(300,new Tree(null,null,'c')),
+            new Element(250,new Tree(null,null,'d')),
+            new Element(200,new Tree(null,null,'e')),
+            new Element(150,new Tree(null,null,'f'))};
 
         Tree huff = new Tree(frequency);
         Tree.print(huff);

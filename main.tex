@@ -204,7 +204,8 @@ colorlinks=false,% hyperlinks will be black
 				If the theorum does not apply, an alternative is writing, a tree with $a$ children at each node, the number of elements in the node $b$ and then then sum up all layers run time.\\[4mm]
 				There is instances where to function may fall into two of the cases, for example $T(n)=@T(n/2)+n\log n$.\\
 				This case it will fall between case 1 and 2 and can only be found through the tree method.\\
-				It shall be noted that, in the case of an uneven divide of the tree, but it does not matter in the runtime since it will only differ with a few constants.
+				It shall be noted that, in the case of an uneven divide of the tree, but it does not matter in the runtime since it will only differ with a few constants.\\
+				In case of $T(n)=aT(kn/b)$ where $k$ is constant the b value is actually $k/b$.
 				\subsubsection{Strassen matrix multiplikation}
 					Strassen mutliplikation is an algorithm which recursively split up a matrix such the run time get to $O(n^2)$ over the normal calculation method which takes $O(n^3)$\\
 					In a given matrix over the size 2x2 the matrix will be divided up in four matrix of each corner. Then strassen discovered a method such only 7 calculation is needed in a 2x2 matrix instead of 8. This therefore makes the problem into a $T(n)=7T(n/2)+n^2$, 7 from the amount of problems, n/2 by the matrix size always halfing and $n^2$ for each  of the 7 problems taking. Therfore makign the runtime $O(n^2)$ using the master theorum.
@@ -776,6 +777,24 @@ colorlinks=false,% hyperlinks will be black
 			Therefore be reversing it the strongly conncected components are found earlier and fewer nodes are checked.\\
 			This result in the running time being $O(|n|+|e|)$
 		\subsection{MST}
+		\begin{table}[h!]
+				  \begin{tabular}{|l|l|l|l|}
+							 \hline
+							 Navn & Prim & BFS & Kruskal \\ \hline
+							 Directed & UD & Both & UD \\ \hline
+							 Only positive & No & No & No \\ \hline
+							 Run time & $O(|E|\log |V|)$ & $O(|E|+|V|)$ & $O(|E|\log |V|)$ \\ \hline
+				  \end{tabular}
+		\end{table}
+		\begin{table}[h!]
+				  \begin{tabular}{|l|l|l|l|}
+							 \hline
+							 Navn & DFS & Dijkstras & Bellman ford \\ \hline
+							 Directed & Both & D & Both \\ \hline
+							 Only positive & No & Yes & No \\ \hline
+							 Run time & $\theta(|E|+|V|)$ & $\theta(|E|+|V|\log|V|)$ & $\theta(|E||V|)$ \\ \hline
+				  \end{tabular}
+		\end{table}
 			A minimal spanning tree (MST) is a tree which visits every node in a weighted graph, at minimal cose.\\
 			This will form a tree and therefore can not contain any cycles.\\
 			\subsubsection{Prim Jarnik}
