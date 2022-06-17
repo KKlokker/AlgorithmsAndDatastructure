@@ -15,13 +15,12 @@ public class encode {
 
 
         Element[] frequency = new Element[]{
-            new Element(400,new Tree(null,null,'a')),
-            new Element(750,new Tree(null,null,'e')),
-            new Element(300,new Tree(null,null,'i')),
-            new Element(150,new Tree(null,null,'o')),
-            new Element(200,new Tree(null,null,'u')),
-            new Element(100,new Tree(null,null,'y'))};
-
+            new Element(5,new Tree(null,null,'a')),
+            new Element(25,new Tree(null,null,'b')),
+            new Element(10,new Tree(null,null,'c')),
+            new Element(30,new Tree(null,null,'d')),
+            new Element(15,new Tree(null,null,'e')),
+        };
 
         Tree huff = new Tree(frequency);
         Tree.print(huff);

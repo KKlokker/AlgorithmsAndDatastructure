@@ -62,7 +62,8 @@ colorlinks=false,% hyperlinks will be black
 			\subsection{Insertion sort}
 				One of the most simple sorting algorithms.\\
 				Works by going through the list from index 1 and moves moves every entry before the element 1 up until the element is to the right of an element smaller than the element.\\
-				This will therefore have a run time of $O(n^2)$ due to the scenario where the array is in decending order where it will moves $n-1,n-2,..,1$ elements which is $\sum\limits_{j=1}^nj=\frac{(n-1)n}{2}\leq\frac{n^2-n}{2}=n^2$
+				This will therefore have a run time of $O(n^2)$ due to the scenario where the array is in decending order where it will moves $n-1,n-2,..,1$ elements which is $\sum\limits_{j=1}^nj=\frac{(n-1)n}{2}\leq\frac{n^2-n}{2}=n^2$\\
+				The run time of the same elements will only be $O(n)$
 				\begin{algorithmic}[1]
 					\State Insertion-Sort($A,n$)
 					\For{$j=1$ to $n$}
@@ -201,6 +202,7 @@ colorlinks=false,% hyperlinks will be black
 				\end{itemize}
 				Where $\epsilon$ is some constant bigger than 0.\\
 				Remember: $O - \leq$, $\Theta - =$ and $\Omega - \geq$\\
+				And to get special log calc: $\log_b(x)=\frac{\log_k(x)}{\log_k(b)}$ where $k$ is just a constant such as 2.\\
 				If the theorum does not apply, an alternative is writing, a tree with $a$ children at each node, the number of elements in the node $b$ and then then sum up all layers run time.\\[4mm]
 				There is instances where to function may fall into two of the cases, for example $T(n)=@T(n/2)+n\log n$.\\
 				This case it will fall between case 1 and 2 and can only be found through the tree method.\\
@@ -287,9 +289,9 @@ colorlinks=false,% hyperlinks will be black
 					An alternative to having a list as hash chain, is using different methods of finding next open position.\\
 					The following methods uses a given hash function $h(k,i)$, where $k$ is the given value, and $i$ is the shift.\\
 					For every same entry the $i$ variable is increased by 1.\\
-					\textbf{Linear hashing}: if the index is taken $i$ is added to index\\
+					\textbf{Linear hashing/ pobing}: if the index is taken $i$ is added to index\\
 					\textbf{Quadratic hashing}: if the index is taken $i^2$ is added to index\\
-					\textbf{Double hashing}: If the index is taken $i\cdot h(k)$ is added.\\
+					\textbf{Double hashing}: If the index from $h(x)$ is taken then $h'(x)$ is added until an open space is found.\\
 					The reason to use methods which space out index more is to prevent clustering, which can worsen search times.
 			\subsection{Greedy algorithm}
 				A greedy algorithm is an algorithm which takes the first possible solution. This will always find a local optimum, which may not be global optimal.\\
@@ -360,8 +362,8 @@ colorlinks=false,% hyperlinks will be black
 					\State print(x)
 					\State list-tree(x.right)
 				\end{algorithmic}
-				This will go through the tree in order, this pseudo code will here print every key, and it should be noded the code does not handle NIL objects.\\
-				This operation takes $O(n)$ run time and all other oeparations as mention below will run in $O(height)$. The balanced binary tree will therefore have a height of $\log_2 (n+1) \leq $ height and making the run time $O(\log n)$.
+				This will go through the tree in order, this pseudo code will here print every key, and it should be noded the code does not handle NIL objects. This inorder will take $n$ in both balanced and unbalanced.\\
+				All other oeparations as mention below will run in $O(height)$. The balanced binary tree will therefore have a height of $\log_2 (n+1) \leq $ height and making the run time $O(\log n)$.
 				\subsubsection{Searching a binary tree}
 					To search the tree, a comparison is done at each node from which the right child is choosen:
 					\begin{algorithmic}[1]
@@ -477,6 +479,7 @@ colorlinks=false,% hyperlinks will be black
 					\item The root has to be black
 					\item A red notes child can not be red
 					\item Leafs has to be black
+					\item All path from a node to leafs must contain the same amount of black nodes
 				\end{itemize}
 				The rules ensures that the roots childrens height will atmost be different by a factor by 2.\\
 				This is due to one branch being all black and the other being red and black all the way.\\
@@ -692,6 +695,8 @@ colorlinks=false,% hyperlinks will be black
 			\item $E$ the set of all edges
 			\item $n=|V|$,$m=|E|$
 			\item $0\leq m\leq n^2$ for oriented and $0\leq m \leq n^2/2$ for unoriented graph
+			\item Minimum spanning tree - MST A tree with lowest optimal path to all vertices
+			\item DAG - Directed acyclic graph - A graph which is directed with no cycles
 		\end{itemize}
 		\subsection{Representation}
 			Graph may be setup as a graph.\\
@@ -742,6 +747,7 @@ colorlinks=false,% hyperlinks will be black
 				This will result in every node has the shortest distance, due to essencially every node being taken in order of distance to root and therefore once a node is reached it is the shortest distance.\\
 			\subsubsection{Depth first traversal}
 				This method is a recursive method, and therefore is refered to using the stack.\\
+				Run time: $O(|V|+|E|)$\\
 				The method works by every node is white, and the one choosen is made grey.\\
 				A recursive function is then called on a connected node, which makes it grey and call the recursive function on all connected nodes.\\
 				By this every connected node will be found recursively. This is seen in the stack by when a node is called it is added to the stack and becomes grey, once every connected node is found and popped of the stack it returns to the grey node and it becomes black and pops off.\\
@@ -807,6 +813,7 @@ colorlinks=false,% hyperlinks will be black
 				This method simply handles a new edge and compare to an already known lightest weight. This weight the lightest is saved.
 			\subsubsection{Dijkstras}
 				This method is a more sophisticated version of relax. Instead of just trying every edge, a start edge is selected. Then every edge from the start node is added to a minimum queue. Then a loop is done until the queue is empty.\\
+				Run time: $O(|V|\log |V| + |E|)$\\ but can be up to $\omega(|E|\log |V|)$\\
 				The minumum edge in weight is choosen and the receiving nodes edges is added to the queue and called relax upon.\\
 				Every used node is saved, such if an edge from the queue is choosen towards an already checked node, the edge is dumped.\\
 			\subsubsection{Bellman ford}

@@ -40,16 +40,22 @@ public class Kruskal {
         g.add(3, 1, 1);
         g.add(4, 3, 1);
         */
-        g.add(0,1,10);
-        g.add(0,3,5);
+        g.add(0,1,1);
+        g.add(0,3,1);
         g.add(1,2,1);
-        g.add(1,3,2);
-        g.add(2,4,4);
-        g.add(3,1,3);
-        g.add(3,2,9);
-        g.add(3,4,2);
-        g.add(4,2,6);
-        g.add(4,0,7);
+        g.add(3,4,1);
+        g.add(4,0,1);
+        g.add(4,1,1);
+        g.add(4,5,1);
+        g.add(4,7,1);
+        g.add(5,1,1);
+        g.add(5,2,1);
+        g.add(5,8,1);
+        g.add(6,3,1);
+        g.add(6,7,1);
+        g.add(7,3,1);
+        g.add(7,8,1);
+        g.add(8,4,1);
         /*
         int cost = 0;
         for(Edge e: prim(g,0)) {
@@ -73,10 +79,14 @@ public class Kruskal {
             System.out.println("");
         }       
         */
-
-        for(int i: dijkstras(g,0))
-            System.out.println("Length is: " + i);
-
+        List<Integer> test = dijkstras(g,6);
+        for(int[] i: DFS(g)){
+                System.out.print(i[0] + " - " + i[1] + ", ");
+        }
+        System.out.println("x");
+        for(int[] i: DFS(g,6)){
+                System.out.print(i[0] + ", ");
+        }
         System.out.println(bellmanFord(g, 0));
     }
 
@@ -106,8 +116,7 @@ public class Kruskal {
                 relax(graph, x, y, shortestPath);
         return shortestPath;
     }
-
-    
+   
     public static void relax(Graph graph,int x, int y,List<Integer> SP) {
         if(graph.get(x, y) != null && SP.get(y) > SP.get(x) + graph.get(x, y))
             SP.set(y, SP.get(x) + graph.get(x, y));        
@@ -180,6 +189,31 @@ public class Kruskal {
         for(int i = 0; i < graph.size; i++)
             if(!visited[i])
                 dfs.add(DFSVisit(time, graph, i,visited, dfs));
+        return dfs;
+    }
+
+    public static List<Integer> topologicalSort(Graph graph, int start) {
+        List<int[]> order = new ArrayList<>();
+        for(int[] info: DFS(graph,start))
+            if(order.size() == 0) order.add(info);
+            else 
+                for(int i = 0; i < order.size(); i++) //quick and dirty linear sort
+                    if(order.get(i)[2] < info[2]) {order.add(i,info); i = order.size();}
+        List<Integer> orderedVertex = new ArrayList<>();
+        for(int[] info: order)
+            orderedVertex.add(info[0]);
+        return orderedVertex;
+    }
+
+    public static List<int[]> DFS(Graph graph, int start) {
+        List<int[]> dfs = new ArrayList<>();
+        boolean[] visited = new boolean[graph.size()+1];
+        Arrays.fill(visited, false);
+        AtomicInteger time = new AtomicInteger(0);
+        
+        for(int i = 0; i < graph.size; i++)
+            if(!visited[(i+start)%graph.size])
+                dfs.add(DFSVisit(time, graph, (i+start)%graph.size,visited, dfs));
         return dfs;
     }
 
