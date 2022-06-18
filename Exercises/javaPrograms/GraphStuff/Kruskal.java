@@ -125,20 +125,33 @@ public class Kruskal {
         //a,b,c,d,e,f,g,h,i
         //0,1,2,3,4,5,6,7,8
         Graph g3 = new Graph(false);        
-        g3.add(5, 6, 8);
-        g3.add(7, 8, 9);
-        g3.add(0, 5, 3);
-        g3.add(5, 1, 5);
-        g3.add(1, 6, 2);
-        g3.add(6, 2, 6);
-        g3.add(2, 7, 9);
-        g3.add(7, 3, 6);
-        g3.add(3, 8, 7);
-        g3.add(8, 4, 1);
-        g3.add(0, 1, 4);
-        g3.add(1, 2, 1);
-        g3.add(2, 3, 8);
-        g3.add(3, 4, 7);
+        g3.add(0, 1, 17);
+        g3.add(0, 4, 11);
+        g3.add(0, 3, 8);
+        g3.add(4, 1, 5);
+        g3.add(4, 2, 3);
+        g3.add(4, 3, 18);
+        g3.add(2, 1, 14);
+        g3.add(2, 3, 25);
+        //a,b,c,d,e,f,g,h,i
+        //0,1,2,3,4,5,6,7,8
+        Graph g4 = new Graph(true);
+        g4.add(0, 4, 17);
+        g4.add(1, 0, 17);
+        g4.add(1, 2, 11);
+        g4.add(2, 8, 8);
+        g4.add(3, 2, 5);
+        g4.add(4, 3, 3);
+        g4.add(4, 8, 18);
+        g4.add(5, 4, 14);
+        g4.add(5, 8, 25);
+        g4.add(6, 5, 25);
+        g4.add(6, 7, 25);
+        g4.add(7, 0, 25);
+        g4.add(8, 1, 25);
+        g4.add(8, 3, 25);
+        g4.add(8, 6, 25);
+        g4.add(8, 7, 25);
         
         /*
         g4.add(2,1,1);
@@ -164,9 +177,20 @@ public class Kruskal {
         //int[][] d = BFS(ug,2);
         //for(int i =0; i<d.length; i++)
         //    System.out.println(i + ": " + d[i][0] + " - " + d[i][1]);
+        /*
         List<Edge> e = kruskal(g3);
         for(Edge b: e) 
             System.out.println(b.from + " - " + b.to);
+            */
+        /*
+        List<Edge> l = prim(g3, 0);
+        for(Edge e: l)
+            System.out.println(alf[e.from] + " - "  + alf[e.to] + ": " + e.cost);
+        */
+        for(Integer[] i: DFS(g4,8))
+            System.out.println(alf[i[0]] + ": " + i[1] + " - " + i[2]);
+        
+                
     }
 
     public static List<List<Integer>> SCC(Graph graph) {
@@ -261,7 +285,7 @@ public class Kruskal {
     public static List<Integer> topologicalSort(Graph graph) {
         List<Integer[]> order = new ArrayList<>();
         
-        for(Integer[] info: DFS(graph))
+        for(Integer[] info: DFS(graph, 0))
             if(order.size() == 0) order.add(info);
             else 
                 for(int i = 0; i < order.size(); i++) //quick and dirty linear sort
@@ -272,20 +296,20 @@ public class Kruskal {
         return orderedVertex;
     }
 
-    public static Integer[][] DFS(Graph graph) {
+    public static Integer[][] DFS(Graph graph, int start) {
         Integer[][] dfs = new Integer[graph.size()+1][3];
         boolean[] visited = new boolean[graph.size()+1];
         Arrays.fill(visited, false);
         AtomicInteger time = new AtomicInteger(0);
-        
-        for(int i = 0; i <= graph.size; i++)
+        int end = (start == 0) ? graph.size() : start -1;
+        for(int i = start; i <= start; i++)
             if(!visited[i])
                 DFSVisit(time, graph, i,visited, dfs);
         return dfs;
     }
 
     private static void DFSVisit(AtomicInteger time, Graph graph, int vertex,boolean[] visited, Integer[][] dfs) {
-        System.out.println("Visited: " + vertex);
+        //[vertex][discovery][finish]
         dfs[vertex][0] = vertex;
         time.incrementAndGet();
         dfs[vertex][1] = time.get();
@@ -383,6 +407,7 @@ public class Kruskal {
             while(checked[best.to] && vertexQueue.size() > 0);
 
             if(!checked[best.to]) {
+                System.out.println("Took this from the queue: " + best.from + " - " + best.to);
                 MST.add(best);
                 discover[best.to] = best.from;
                 startVertex = best.to;

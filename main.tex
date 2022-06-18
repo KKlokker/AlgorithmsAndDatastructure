@@ -291,7 +291,7 @@ colorlinks=false,% hyperlinks will be black
 					The following methods uses a given hash function $h(k,i)$, where $k$ is the given value, and $i$ is the shift.\\
 					For every same entry the $i$ variable is increased by 1.\\
 					\textbf{Linear hashing/ pobing}: if the index is taken $i$ is added to index\\
-					\textbf{Quadratic hashing}: if the index is taken $i^2$ is added to index\\
+					\textbf{Quadratic hashing}: uses the function $h(x,i)=h'(x)+c_1i+c_2i^2$ mod $m$ where start at $i=0$ then $i$ is incremented and added to first value, and $m$ is the size of the array.\\
 					\textbf{Double hashing}: If the index from $h(x)$ is taken then $h'(x)$ is added until an open space is found.\\
 					The reason to use methods which space out index more is to prevent clustering, which can worsen search times.
 			\subsection{Greedy algorithm}
@@ -784,21 +784,12 @@ colorlinks=false,% hyperlinks will be black
 			This result in the running time being $O(|n|+|e|)$
 		\subsection{MST}
 		\begin{table}[h!]
-				  \begin{tabular}{|l|l|l|l|}
+				  \begin{tabular}{|l|l|l|}
 							 \hline
-							 Navn & Prim & BFS & Kruskal \\ \hline
-							 Directed & UD & Both & UD \\ \hline
-							 Only positive & No & No & No \\ \hline
-							 Run time & $O(|E|\log |V|)$ & $O(|E|+|V|)$ & $O(|E|\log |V|)$ \\ \hline
-				  \end{tabular}
-		\end{table}
-		\begin{table}[h!]
-				  \begin{tabular}{|l|l|l|l|}
-							 \hline
-							 Navn & DFS & Dijkstras & Bellman ford \\ \hline
-							 Directed & Both & D & Both \\ \hline
-							 Only positive & No & Yes & No \\ \hline
-							 Run time & $\theta(|E|+|V|)$ & $\theta(|E|+|V|\log|V|)$ & $\theta(|E||V|)$ \\ \hline
+							 Navn & Prim  & Kruskal  \\ \hline
+							 Directed & UD  & UD\\ \hline
+							 Only positive & No  & No\\ \hline
+							 Run time & $O(|E|\log |V|)$  & $O(|E|\log |V|)$ \\ \hline
 				  \end{tabular}
 		\end{table}
 			A minimal spanning tree (MST) is a tree which visits every node in a weighted graph, at minimal cose.\\
@@ -827,6 +818,27 @@ colorlinks=false,% hyperlinks will be black
 					\State return $A$
 				\end{algorithmic}
 				This will work by same argument as Prim Jarnik, but this will gurantee a better MST, in case of a bad start for Prim Jarnik.
+				
+		\subsection{Shortest Path}
+		
+		\begin{table}[h!]
+				  \begin{tabular}{|l|l|l|l|}
+							 \hline
+							 Navn &  BFS  & Floyd & DAG \\ \hline
+							 Directed & Both & D & Both?\\ \hline
+							 Only positive & No & No & No\\ \hline
+							 Run time & $O(|E|+|V|)$ &$O(|V|^3)$ & $O(|V|+|E|)$\\ \hline
+				  \end{tabular}
+		\end{table}
+		\begin{table}[h!]
+				  \begin{tabular}{|l|l|l|l|l|}
+							 \hline
+							 Navn & DFS & Dijkstras & Bellman ford & Johnson \\ \hline
+							 Directed & Both & D & Both & D\\ \hline
+							 Only positive & No & Yes & No & No\\ \hline
+							 Run time & $\theta(|E|+|V|)$ & $O(|E|\cdot \log|V|)$ & $O(|V|^2|E|)$ & $O(|E||V|\log|V|)$\\ \hline
+				  \end{tabular}
+		\end{table}
 			\subsubsection{Relax}
 				Relax is a method which, simply works by a handler, which goes through every edge and sends it to the relax method.\\
 				This method simply handles a new edge and compare to an already known lightest weight. This weight the lightest is saved.

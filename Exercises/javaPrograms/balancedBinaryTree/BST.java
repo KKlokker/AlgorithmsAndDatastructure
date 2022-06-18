@@ -4,28 +4,30 @@ import java.security.Key;
 
 public class BST {
     public static void main(String[] args){
-        Tree root = new Tree(null, null, null, 24, "test", false);
-        Tree left = new Tree(root,null,null, 18, "test", true);
-        Tree t1 =  new Tree(root,null,null, 26, "test", false);
-        Tree t2 =  new Tree(left,null,null, 5, "test", false);
-        Tree t3 =  new Tree(left,null,null, 20, "test", false);
-        Tree t4 =  new Tree(t2,null,null, 2, "test", true);
-        Tree t5 =  new Tree(t2,null,null, 7, "test", true);
-        Tree t6 =  new Tree(t3,null,null, 23, "test", true);
-        Tree t7 =  new Tree(t1,null,null, 27, "test", true);
+        Tree root = new Tree(null, null, null, 5, "test", false);
+        Tree left = new Tree(root,null,null, 3, "test", false);
+        Tree t1 =  new Tree(root,null,null, 7, "test", true);
+        Tree t2 =  new Tree(left,null,null, 2, "test", true);
+        Tree t3 =  new Tree(left,null,null, 4, "test", true);
+        Tree t4 =  new Tree(t1,null,null, 6, "test", false);
+        Tree t5 =  new Tree(t1,null,null, 9, "test", false);
+        Tree t6 =  new Tree(t5,null,null, 8, "test", true);
+        Tree t7 =  new Tree(t5,null,null, 10, "test", true);
 
         root.left = left;
         root.right = t1;
-        t1.right = t7;
+        t1.right = t5;
+        t1.left = t4;
         left.left = t2;
         left.right = t3;
-        t2.left = t4;
-        t2.right = t5;
-        t3.right= t6;
+        t5.left = t6;
+        t5.right = t7;
+        
         
         print(root);
-        insert(root, new Tree(null, null, null, 21, "test", true));
-        
+        System.out.println("-----");
+        insert(root, new Tree(null, null, null, 11, "test", true));
+        while(root.parent != null) root = root.parent;
         print(root);
     }
 
@@ -40,7 +42,6 @@ public class BST {
             else
                 t = t.right;
         }
-        System.out.println(y.key);
         x.parent = y;   
         if(x.key < y.key)
             y.left = x;
@@ -52,8 +53,9 @@ public class BST {
     public static void insertFix(Tree z) {
         if(z.parent != null && z.parent.parent != null) {
             while(z.parent.isRed) {
-                System.out.println(z.key);
+                System.out.println("Looking at: " + z.key);
                 if(z.parent == z.parent.parent.left) {
+                    System.out.print("obj");
                     Tree y = z.parent.parent.right;
                     if(y != null && y.isRed) {
                         z.parent.isRed = false;
@@ -73,7 +75,7 @@ public class BST {
                 }
                 else {
                     Tree y = z.parent.parent.left;
-                    System.out.println(z.parent.parent.key);
+                    System.out.println("parent: " + z.parent.key);
                     if(y != null && y.isRed) {
                         z.parent.isRed = false;
                         y.isRed = false;
@@ -91,7 +93,7 @@ public class BST {
                     }
                 }
             }
-            z.isRed = false;
+            //z.isRed = false; Maybe a good idea?
         }
     }
 
